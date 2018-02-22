@@ -1,0 +1,172 @@
+//gabs dito ka gagawa css
+input[type=text] {
+    width: 80%;
+    height: 10%;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 80% */
+input[type=text]:focus {
+    width: 80%;
+}
+
+//home welcome
+.title {
+    font-size: 60px !important;
+    color: #406000;
+    text-align: center;
+    padding-bottom: 10px;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+}
+
+//searchbox
+.searchBox {
+    height: 80px !important;
+    font-size: 50px !important;
+    border-radius: 50px;
+    padding-left: 18px;
+    padding-right: 18px;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+    margin-bottom: 10px !important;
+}
+
+//about us
+.description {
+    font-family: 'Open Sans', sans-serif ;
+    text-align: justify !important;
+    margin-bottom: 20px !important;
+}
+
+.au-title {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+//submit button
+.btn-primary {
+    /*padding-top: 20px !important;*/
+    margin-top: 10px !important;
+    color: #fff;
+    background-color: #8C0000 !important;
+    border-color: #670000 !important;
+    font-size: 30px !important;
+    margin-left: 43% !important;
+    border-radius: 50px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #670000 !important;
+  border-color: #3D0000 !important;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #670000 !important;
+  border-color: #3D0000 !important;
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.open > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #670000 !important;
+  border-color: #3D0000 !important;
+}
+
+.navbar-inverse {
+    background-color: #670000 !important;
+    border-color: #3D0000 !important;
+  }
+  
+  .navbar-inverse .navbar-brand {
+    color: #eeeeee !important;
+  }
+  
+  .navbar-inverse .navbar-brand:hover,
+  .navbar-inverse .navbar-brand:focus,
+  .navbar-inverse .navbar-brand:active {
+    color: #fff;
+    background-color: #8E1616 !important;
+  }
+  
+  .navbar-inverse .navbar-text {
+    color: #eeeeee !important;
+  }
+  
+  .navbar-inverse .navbar-nav > li > a {
+    color: #eeeeee !important;
+  }
+  
+  .navbar-inverse .navbar-nav > li > a:hover,
+  .navbar-inverse .navbar-nav > li > a:focus,
+  .navbar-inverse .navbar-nav > li > a:active {
+    color: #fff;
+    background-color: #8E1616 !important;
+  }
+  
+  .navbar-inverse .navbar-nav > .active > a,
+  .navbar-inverse .navbar-nav > .active > a:hover,
+  .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #090909;
+  }
+  
+  .navbar-inverse .navbar-nav > .disabled > a,
+  .navbar-inverse .navbar-nav > .disabled > a:hover,
+  .navbar-inverse .navbar-nav > .disabled > a:focus {
+    color: #444;
+    background-color: transparent;
+  }
+  
+  .navbar-inverse .navbar-toggle {
+    border-color: #333;
+  }
+  
+  .navbar-inverse .navbar-toggle:hover,
+  .navbar-inverse .navbar-toggle:focus {
+    background-color: #333;
+  }
+  
+  .navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #fff;
+  }
+  
+  .navbar-inverse .navbar-collapse,
+  .navbar-inverse .navbar-form {
+    border-color: #101010;
+  }
+  
+  .navbar-inverse .navbar-nav > .open > a,
+  .navbar-inverse .navbar-nav > .open > a:hover,
+  .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #090909;
+    color: #fff;
+  }
+
+  .stats {
+    text-align:center;
+    text-shadow:1px 1px 0px #fff;
+    margin-top:25px;  
+    
+  }
+  .stats li{
+    width:125px; 
+  }
+  .stats span{
+    font-family:Helvetica;
+    font-weight:bold;
+    text-shadow:1px 1px 0px #fff;
+    font-size:4em;
+    
+    display:block;
+    line-height:1em;
+  }
+  
+  
+
