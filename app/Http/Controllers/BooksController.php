@@ -16,15 +16,17 @@ class BooksController extends Controller
     {
         //
         //$books= Books::all();
-        $books=Books::orderBy('id','desc')->paginate(10);
+        $books=Books::orderBy('id','desc')->paginate(6);
+
         return view('Pages.books')->with('books',$books);
     }
 
     public function search(Request $request)
     {
         $book_search=$request->input('book');
-        $books=Books::where('title','LIKE','%'.$book_search.'%')->paginate(10);
-        return view('Pages.books')->with('books',$books);
+        $book=Books::where('title','LIKE','%'.$book_search.'%')->paginate(100);
+      
+        return view('Pages.books')->with('books',$book);
     }
 
     /**
@@ -59,7 +61,7 @@ class BooksController extends Controller
     {
         //
         $book=Books::find($id);
-        return view('Books.view')->with('books',$book);
+        return view('Books.views')->with('books',$book);
     }
 
     /**
