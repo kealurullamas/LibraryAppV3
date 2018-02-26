@@ -10,6 +10,43 @@ input[type=text] {
 input[type=text]:focus {
     width: 80%;
 }
+//footer 
+.footer-div {
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  height: 100px;
+  background-color: #8C0000 !important;
+  display:inline-block;
+}
+  .footer-block-div {
+    padding: 10px 10px;
+    margin: 0 0;
+    background-color:  #670000 !important;
+    color: #fff;
+    text-align: center;
+  }
+
+  .footer-title {
+    padding: 10px 0px 0px 0px !important;
+    font-weight: bold;
+  }
+
+//book imagessss
+.bookImg {
+  width:95% !important; 
+  max-width: 95%;
+  min-width: 95%;
+  height: 60vh;
+  margin: 10px
+}
+
+
+//center the paginationn
+.centerPaginate{
+  margin-left: auto;
+  margin-right: auto;
+}
 
 //home welcome
 .title {
@@ -31,6 +68,10 @@ input[type=text]:focus {
     margin-left: 10% !important;
     margin-right: 10% !important;
     margin-bottom: 10px !important;
+}
+
+.container {
+  min-height: 100% !important;
 }
 
 //about us
@@ -205,6 +246,8 @@ input[type=text]:focus {
     border-radius: 15px;
     border: 2px solid #eee;
     box-sizing: border-box;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
   
   .item-img {

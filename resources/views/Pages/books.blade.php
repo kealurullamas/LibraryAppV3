@@ -20,8 +20,7 @@
 					<li class="grid-tile">
 						<div class="item">
                             <div class="item-img">
-                                    <img style="width:95% !important; height:500px;
-                                    margin: 10px;"src="{{asset('images/'.$book->image)}}">
+                                    <img class="bookImg" src="{{asset('images/'.$book->image)}}">
                             </div>
 							<div class="item-pnl">
 								<div class="pnl-wrapper">
@@ -33,9 +32,11 @@
 								</div>
 							</div>
 						</div>
-					</li>
-                    @endforeach
-                    {{$books->appends(\Request::except('page'))->links()}}
+                    </li>
+                    <!--<div class="centerPaginate"> -->
+                        @endforeach
+                        {{$books->appends(\Request::except('page'))->links()}}
+                    <!--</div> -->
 				</ul>
             </section>
             

@@ -18,6 +18,7 @@
        @include('Inc.nav')
        @include('Inc.messages');
         @yield('content')
+        @include('Layouts.footer')
     </div>
 
     <!-- Scripts -->
