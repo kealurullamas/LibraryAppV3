@@ -28,8 +28,14 @@ class DashboardController extends Controller
         /*$user=User::find(Auth()->user()->id);
         $book=Books::find(2);
         $user->books()->attach($book->id);*/
-        $user=User::find(Auth()->user()->id);
-        return view('dashboard')->with('user',$user);
+        if(!auth()->guest()){
+            $user=User::find(Auth()->user()->id);
+            return view('dashboard')->with('user',$user);
+        }
+        else
+        {
+            return redirect('Auth.login');
+        }
     }
     public function admin()
     {

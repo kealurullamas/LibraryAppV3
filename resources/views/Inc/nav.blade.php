@@ -13,7 +13,8 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{route('index')}}">
-                    {{ config('app.name', 'Laravel') }}
+                    <!--{{ config('app.name', 'Laravel') }} 
+                     -->
                 </a>
             </div>
 
@@ -25,11 +26,13 @@
                   <li class="{{Request::segment(1) === 'contact' ? 'active' :null}}"><a href="{{route('contact')}}">Contact</a></li>
                   <li class="{{Request::segment(1) === 'books' ? 'active' :null}}"><a href="{{route('books.index')}}">Books</a></li>
                   <li class="{{Request::segment(1) === 'faq' ? 'active' :null}}"><a href="{{route('faq')}}">Faq</a></li>
+                  
                 </ul>
-
+               
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
+                    
                     @guest
                         <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('register') }}">Register</a></li>
@@ -61,6 +64,8 @@
                         </li>
                     @endguest
                 </ul>
+                <input placeholder="Search for a book or author..." name="book" value="" class="searchBox active" type="text">
+                <input value="Search" class="btn-primary-search btn" type="submit">
             </div>
         </div>
     </nav>

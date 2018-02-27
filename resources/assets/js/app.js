@@ -30,7 +30,6 @@ const app = new Vue({
         
         });
 
-        
         Echo.private('App.User.'+ userId).notification((notification) => {
             console.log('asdasdasdads');
             this.notifications.push(notification);
