@@ -58,13 +58,23 @@ input[type=text]:focus {
     margin-right: 10% !important;
 }
 
+#logo-title{
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 //searchboxxxx
 .searchBox {
     font-size: 20px !important;
     border-radius: 50px 5px 5px 50px !important;
-    min-width: 49vw;
-    width: 49vw;
-    margin-left: 0.75vw;
+    min-width: 49.85vw !important;
+    width: 49.85vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    margin-top: 0.5vh;
+    margin-bottom: 1vh;
 }
 
 .Searchcontainer {
@@ -110,6 +120,7 @@ input[type=text]:focus {
     margin-left: auto !important;
     margin-right: auto !important;
     margin-bottom: 5px;
+    margin-top: 1vh;
   }
 }
 
@@ -130,10 +141,10 @@ input[type=text]:focus {
     color: #fff;
     background-color: #8C0000;
     border-color: #670000;
-    font-size: 30px;
+    font-size: 35px;
     margin-left: auto !important;
     margin-right: auto !important;
-    margin-bottom: 5px;
+    margin-top: -0.5vh;
     border-radius: 50px;
     padding-left: 20px;
     padding-right: 20px;

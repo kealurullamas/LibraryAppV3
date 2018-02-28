@@ -12,13 +12,19 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{route('index')}}">
-                    <!--{{ config('app.name', 'Laravel') }} 
-                     -->
-                </a>
+                
+                <a id="logo-title" class="navbar-brand" href="{{route('index')}}">
+                    {{ config('app.name', 'Laravel') }} 
+                     
+                </a> 
             </div>
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <div class="collapse navbar-collapse" id="app-navbar-collapse"><!--
+                <a id="logo-title" class="navbar-brand" href="{{route('index')}}">
+                            {{ config('app.name', 'Laravel') }} 
+                        </a> -->
+                <input placeholder="Search for a book or author..." name="book" value="" class="searchBox active" type="text">
+                <input value="Search" class="btn-primary-search btn" type="submit">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                   <li class="{{Request::segment(1) === 'index' ? 'active' :null}}"><a href="{{route('index')}}">Home</a></li>
@@ -64,8 +70,7 @@
                         </li>
                     @endguest
                 </ul>
-                <input placeholder="Search for a book or author..." name="book" value="" class="searchBox active" type="text">
-                <input value="Search" class="btn-primary-search btn" type="submit">
+                
             </div>
         </div>
     </nav>
