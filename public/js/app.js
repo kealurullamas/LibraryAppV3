@@ -1009,7 +1009,7 @@ var app = new Vue({
         var _this = this;
 
         var userId = $('meta[name="userId"]').attr('content');
-        axios.post('http://localhost/LibraryApp/public/notification/get').then(function (response) {
+        axios.post('http://localhost:8080/LibraryApp/public/notification/get').then(function (response) {
             _this.notifications = response.data;
         });
 
@@ -48086,6 +48086,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['notifications'],
@@ -48095,8 +48103,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: notification.id
 
             };
-            axios.post("http://localhost/LibraryApp/public/notification/read", data).then(function (response) {
-                window.location.href = "http://localhost/LibraryApp/public/dashboard";
+            axios.post("http://localhost:8080/LibraryApp/public/notification/read", data).then(function (response) {
+                window.location.href = "http://localhost:8080/LibraryApp/public/dashboard";
             });
         }
     }
@@ -48110,26 +48118,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "dropdown" }, [
-    _c(
-      "a",
-      {
-        staticClass: "dropdown-toggle",
-        attrs: {
-          href: "#",
-          "data-toggle": "dropdown",
-          role: "button",
-          "aria-expanded": "false",
-          "aria-haspopup": "true"
-        }
-      },
-      [
-        _vm._v("\n        Notifications "),
-        _c("span", { staticClass: "badge", attrs: { "aria-hidden": "true" } }, [
-          _vm._v(_vm._s(_vm.notifications.length))
-        ])
-      ]
-    ),
+  return _c("li", { staticClass: "upper-links dropdown" }, [
+    _c("a", { staticClass: "links", attrs: { href: "#" } }, [
+      _c(
+        "svg",
+        {
+          staticStyle: { overflow: "visible" },
+          attrs: { width: "16px", height: "12px" }
+        },
+        [
+          _c("path", {
+            attrs: {
+              d:
+                "M8.037 17.546c1.487 0 2.417-.93 2.417-2.417H5.62c0 1.486.93 2.415 2.417 2.415m5.315-6.463v-2.97h-.005c-.044-3.266-1.67-5.46-4.337-5.98v-.81C9.01.622 8.436.05 7.735.05 7.033.05 6.46.624 6.46 1.325v.808c-2.667.52-4.294 2.716-4.338 5.98h-.005v2.972l-1.843 1.42v1.376h14.92v-1.375l-1.842-1.42z",
+              fill: "#fff"
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c("span", { staticClass: "badge", attrs: { "aria-hidden": "true" } }, [
+        _vm._v(_vm._s(_vm.notifications.length))
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "ul",
@@ -48140,6 +48151,7 @@ var render = function() {
             _c(
               "a",
               {
+                staticClass: "profile-links",
                 attrs: { href: "#" },
                 on: {
                   click: function($event) {
