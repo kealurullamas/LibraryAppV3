@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <h1>LIBRARY HOURS AND LOCATION</h1>
-            <img src="{{asset('images/library.png')}}">
+        <h1 class="faq-title">LIBRARY HOURS AND LOCATION</h1>
+            <img src="{{asset('images/library.png')}}" class="about-us-img">
             <h5>
                 Library Hours
                 Monday to Friday,7:00AM-8:00PM
@@ -13,7 +13,7 @@
                 3rd floor,Room 302
             </h5>
 
-        <h1>1.How can I access /download E-books,E-Journal or E-Magazines?</h1>
+        <h1 class="faq-title">1.How can I access /download E-books,E-Journal or E-Magazines?</h1>
             <pre>
                     Either you are connected to LPU internet or not,you can access
                     our E-resources,just follow the details below:
@@ -28,12 +28,12 @@
                           Periodicals section for instruction
             </pre>  
 
-        <h1>2. Where can we print EAF Enrollment Assessment Form?</h1>        
+        <h1 class="faq-title">2. Where can we print EAF Enrollment Assessment Form?</h1>        
             <pre>
                 -Printing of EAF is available at Electronic library.
             </pre>    
 
-        <h1>What are the consideration for borrowing Reserve BOOKS?</h1>        
+        <h1 class="faq-title">What are the consideration for borrowing Reserve BOOKS?</h1>        
             <pre>
                     Books on reserve counter can be borrowed for the following      consideration ;
                     3.1 If there are multiple copies of a specific book,students can use it for      classroom use;
@@ -43,7 +43,7 @@
                           should be returned at 8:00 in the morning on the following day.                    
             </pre>    
             
-        <h1>4.What are the DO's and DONT'S In the Library</h1>        
+        <h1 class="faq-title">4.What are the DO's and DONT'S In the Library</h1>        
             <pre>
                     DO
                     4.1 Courtesy to other library customers,observe silence at all times
@@ -70,7 +70,7 @@
                           and highlights or even fold the pages of the books.                    
             </pre>  
 
-        <h1>5.Where can we request referral letter to use the library at the other institution</h1>        
+        <h1 class="faq-title">5.Where can we request referral letter to use the library at the other institution</h1>        
             <pre>
                     Referral letter are only issued to students if:
                     5.1 The data/information needed by students is only available in the
@@ -83,7 +83,7 @@
                          STUDY AREA.                    
             </pre>  
 
-        <h1>What Types of BAGS are ALLOWED and NOT ALLOWED Inside the library</h1>
+        <h1 class="faq-title">What Types of BAGS are ALLOWED and NOT ALLOWED Inside the library</h1>
             <pre>
                     Students are REQUIRED to Deposit their bags in the
                     BAGGAGE COUNTER AREA before entering the SHL ARC; to

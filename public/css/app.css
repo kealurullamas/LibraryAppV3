@@ -75,8 +75,29 @@ input[type=text]:focus {
   margin-bottom: 1vh;
 }
 
+.btn-primary {
+  background-color: #8C0000 !important;
+  border-color: #670000 !important;
+}
+
+.btn-link {
+  color: #8C0000 !important;
+}
+
 .Searchcontainer {
-  min-height: 181.12vh;
+  min-height: 76.16vh;
+  height: 100% !important;
+  max-width: 70vw !important;
+  margin-top: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 10px;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.Logincontainer {
+  min-height: 78.3vh;
   height: 100% !important;
   max-width: 70vw !important;
   margin-top: auto !important;
@@ -88,8 +109,15 @@ input[type=text]:focus {
 }
 
 @media only screen and (max-width: 360px) {
+  .Logincontainer {
+    height: 100% !important;
+    max-width: 90vw !important;
+    margin: auto auto !important;
+    padding-left: 0vw;
+    padding-right: 0vw;
+  }
+
   .Searchcontainer {
-    min-height: 70vh;
     height: 100% !important;
     max-width: 90vw !important;
     margin: auto auto !important;
@@ -120,6 +148,24 @@ input[type=text]:focus {
     margin-right: auto !important;
     margin-bottom: 5px;
     margin-top: 1vh;
+  }
+
+  .about-us-img {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .description {
+    font-size: 1em;
+  }
+
+  .faq-title {
+    font-size: 1.75em;
+  }
+
+  .home-title {
+    font-size: 0.5em !important;
   }
 }
 
@@ -628,6 +674,8 @@ input[type=text]:focus {
 .fixed-nav {
   position: fixed;
   width: 100%;
+  -webkit-transition: all;
+  transition: all;
 }
 
 .row1 {

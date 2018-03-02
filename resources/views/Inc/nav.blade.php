@@ -75,13 +75,15 @@
     </div>
 </div>
 <div id="mySidenav" class="sidenav">
-    <div class="container" style="background-color: #2874f0; padding-top: 10px;">
-        <span class="sidenav-heading">Home</span>
+    <div class="container" style="background-color: #670000;  padding-top: 0.75px;">
+        <span class="sidenav-heading">SHL-ARC</span>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     </div>
-    <a href="http://clashhacks.in/">Link</a>
-    <a href="http://clashhacks.in/">Link</a>
-    <a href="http://clashhacks.in/">Link</a>
-    <a href="http://clashhacks.in/">Link</a>
+    <a href="{{route('index')}}">Home</a>
+    <a href="{{route('books.index')}}">Books</a>
+    <a href="{{route('about')}}">About Us</a>
+    <a href="{{route('faq')}}">FAQ</a>
+    <a href="">Login</a>
+    <a href="">Register</a>
 </div>
 </div>

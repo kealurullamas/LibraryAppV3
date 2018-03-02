@@ -12,7 +12,7 @@
         <div class="container">
             <div class="row" id="slider-text">
               <div class="col-md-6" >
-                <h2>NEW BOOKS COLLECTION</h2>
+                <h1 class="home-title">NEW BOOKS COLLECTION</h1>
               </div>
             </div>
           </div>

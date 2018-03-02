@@ -1,8 +1,8 @@
 @extends('Layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>About SHL-ARC</h1>
+    <div class="Searchcontainer">
+        <h1 class="faq-title">About SHL-ARC</h1>
         <h4 class="description">
             Sotero H. Laurel - Academic Resource Center
             The Library was named after the late Senator Sotero H.Laurel on September 28,1989
@@ -13,13 +13,13 @@
             The library is a one floor area located at the third floor of the Mabini Wing. It can seat more than 700 readers at a time.
         </h4>
 
-        <h1>Library Mission</h1>
+        <h1 class="faq-title">Library Mission</h1>
         <h4 class="description">
             To support the University instructional, curricular, research and extension programs
             through an organized, relevant, and fast delivery of information services.            
         </h4>
 
-        <h1>General Objectives</h1>
+        <h1 class="faq-title">General Objectives</h1>
         <h4 class="description">
             To provide an adequate, stimulating and collaborative learning environment through
             access to informational sources necessary to keep Lyceum of the Philippines University
