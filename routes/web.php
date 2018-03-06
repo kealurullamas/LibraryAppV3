@@ -30,4 +30,6 @@ route::post('/notification/get','NotificationController@get')->name('notify');
 route::post('/notification/read','NotificationController@read')->name('read');
 route::get('/notification/readAll','NotificationController@all')->name('all');
 Route::get('/admin_view','DashboardController@admin')->name('admin_view');
+Route::get('admin/bookaccepts','AdminController@bookaccepts')->name('accepts');
 Route::resource('/admin','AdminController');
+Route::resource('BookAccepts','BookAcceptsController');

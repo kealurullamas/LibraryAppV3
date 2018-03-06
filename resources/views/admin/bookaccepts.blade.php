@@ -1,13 +1,12 @@
-@extends('layouts.app')
+@extends('Layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Admin Dashboard <a href="{{route('BookAccepts.index')}}" class="btn btn-primary">Book Accepts</a>
-                    <a class="btn btn-primary" href="#">Book Monitoring</a>
-                </div>
+                <div class="panel-heading">Admin Dashboard <a href="#" class="btn btn-primary">Book Accepts</a></div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -27,9 +26,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @if(count($book_requests)>0)
-                                @foreach($book_requests as $bookreq)
-                                    @if($bookreq->status != 'Accepted')
+                            @if(count($book_accepts)>0)
+                                @foreach($book_accepts as $bookreq)
+                   
                                         <tr>
                                             <td><img src="{{asset('images/'.$bookreq->book->image)}}" class='img-thumbnail'></td>
                                             <td>{{$bookreq->book->title}}</td>
@@ -37,29 +36,32 @@
                                             <td>{{$bookreq->status}}</td>
                                             <!--<td><a href="" class="btn btn-success">Accept</td>-->
                                             <td>
-                                                {!!Form::open(['action'=>['BookRequestsController@update',$bookreq->id],'method'=>'POST'])!!}
-                                                    {{Form::hidden('status','Accepted')}} 
-                                                    {{Form::submit('Accept',['class'=>'btn btn-success'])}}
-                                                    {{Form::hidden('_method','PUT')}}
+                                                {!!Form::open(['action'=>'BookAcceptsController@store','method'=>'POST'])!!}
+                                                    {{Form::hidden('id',$bookreq->id)}}
+                                                    {{Form::hidden('uid',$bookreq->user->id)}}
+                                                    {{Form::hidden('bookid',$bookreq->book->id)}}
+                                                    {{Form::hidden('status','Received')}}
+                                                    {{Form::submit('Received',['class'=>'btn btn-success'])}}
                                                 {!!Form::close()!!}
                                             </td>
                                             <td>
-                                                {!!Form::open(['action'=>['BookRequestsController@update',$bookreq->id],'method'=>'POST'])!!}
-                                                    {{Form::hidden('status','Rejected')}} 
-                                                    {{Form::submit('Reject',['class'=>'btn btn-danger'])}}
-                                                    {{Form::hidden('_method','PUT')}}
+                                                {!!Form::open(['action'=>'BookAcceptsController@store','method'=>'POST'])!!}
+                                                    {{Form::hidden('id',$bookreq->id)}}
+                                                    {{Form::hidden('status','Cancelled')}}
+                                                    {{Form::submit('Cancelled',['class'=>'btn btn-danger'])}}
                                                 {!!Form::close()!!}
                                             </td>
                                         </tr>
-                                    @endif
+                                  
                                 @endforeach
                             @endif
                         </tbody>
                     </table>
-                    {{$book_requests->links()}}
+                    {{$book_accepts->links()}}
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection

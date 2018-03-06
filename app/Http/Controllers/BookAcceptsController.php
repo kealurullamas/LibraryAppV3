@@ -3,28 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Books;
-use App\User;
 use App\BooksRequest;
+use App\BookAccepts;
 use Carbon\Carbon;
 
-class AdminController extends Controller
+class BookAcceptsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function bookaccepts()
-    {
-        return Carbon::now();
-        $book_accepts=BooksRequest::where('status','=','Accepted')->paginate(10);
-        return view('admin.bookaccepts')->with('book_accepts',$book_accepts);
-    }
     public function index()
     {
         //
+
+        $book_accepts=BooksRequest::where('status','=','Accepted')->paginate(10);
+        return view('admin.bookaccepts')->with('book_accepts',$book_accepts);
     }
 
     /**
@@ -46,6 +41,22 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         //
+        $due=carbon::now()->addDays(7);
+        $bookreq=BooksRequest::find($request->input('id'));
+        $bookreq->delete();
+
+        if($request->input('status')=='Received')
+        {
+            
+            $accept=new BookAccepts();
+            $accept->user_id=$request->input('uid');
+            $accept->book_id=$request->input('bookid');
+            $accept->due_date=$due;
+            $accept->save();
+
+            return redirect('BookAccepts')->with('success','Book has been Received');
+        }
+        return redirect('BookAccepts')->with('Error','Book Receiving was cancelled');
     }
 
     /**
@@ -57,8 +68,6 @@ class AdminController extends Controller
     public function show($id)
     {
         //
-      $user=User::find($id);
-      return view('admin.users')->with('user',$user);
     }
 
     /**
@@ -71,8 +80,6 @@ class AdminController extends Controller
     {
         //
     }
-
-
 
     /**
      * Update the specified resource in storage.
