@@ -16,15 +16,23 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function bookaccepts()
+    public function __construct()
     {
-        return Carbon::now();
-        $book_accepts=BooksRequest::where('status','=','Accepted')->paginate(10);
-        return view('admin.bookaccepts')->with('book_accepts',$book_accepts);
+        $this->middleware('auth:admin');
+    }
+
+    public function admin()
+    {
+        $book_requests=BooksRequest::where('status','!=','Accepted')->orderBy('created_at','desc')->paginate(5);
+       //s return $book_requests;
+        return view('admin_dashboard')->with('book_requests',$book_requests);
     }
     public function index()
     {
         //
+        $book_requests=BooksRequest::where('status','!=','Accepted')->orderBy('created_at','desc')->paginate(5);
+        //s return $book_requests;
+        return view('admin_dashboard')->with('book_requests',$book_requests);
     }
 
     /**

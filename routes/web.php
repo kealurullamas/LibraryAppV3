@@ -23,13 +23,23 @@ Route::get('/faq','PagesController@faqs')->name('faq');
 Route::post('books/search','BooksController@search');
 Route::resource('/books','BooksController');
 Auth::routes();
+
 Route::post('BookRequest/findAndStore','BookRequestsController@findAndStore');
 Route::resource('BookRequest','BookRequestsController');
+
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
 route::post('/notification/get','NotificationController@get')->name('notify');
 route::post('/notification/read','NotificationController@read')->name('read');
 route::get('/notification/readAll','NotificationController@all')->name('all');
-Route::get('/admin_view','DashboardController@admin')->name('admin_view');
+
+Route::get('/admin_view','AdminController@admin')->name('admin_view');
 Route::get('admin/bookaccepts','AdminController@bookaccepts')->name('accepts');
-Route::resource('/admin','AdminController');
+
 Route::resource('BookAccepts','BookAcceptsController');
+
+Route::get('users/logout','Auth\LoginController@userLogout')->name('user.logout');
+Route::get('admin/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
+Route::post('admin/login','Auth\AdminLoginController@login')->name('admin.login.submit');
+Route::get('admin/logout','Auth\AdminLoginController@login')->name('admin.logout');
+Route::resource('/admin','AdminController');

@@ -25,21 +25,24 @@
                 <div class="carousel carousel-showmanymoveone slide" id="itemslider">
                   <div class="carousel-inner">
           
-                    <div class="item active">
-                        <div class="col-xs-12 col-sm-6 col-md-2">
-                            <a href="#"><img src="{{asset('images/c++.png')}}" class="img-responsive center-block"></a>
-                            <h4 class="text-center"></h4>
-                          </div>
-                    </div>
+                   
           
                     @foreach($books as $book)
-                    <div class="item">
-                      <div class="col-xs-12 col-sm-6 col-md-2">
-                        <a href="#"><img src="{{asset('images/'.$book->image)}}" class="img-responsive center-block"></a>
-                        <h4 class="text-center">{{$book->title}}</h4>
+                      @if($book['id']==$books[0]['id'])
+                        <div class="item active">
+                          <div class="col-xs-12 col-sm-6 col-md-2">
+                              <a href="#"><img src="{{asset('images/c++.png')}}" class="img-responsive center-block"></a>
+                              <h4 class="text-center"></h4>
+                            </div>
+                        </div>
+                       @endif
+                      <div class="item">
+                        <div class="col-xs-12 col-sm-6 col-md-2">
+                          <a href="#"><img src="{{asset('images/'.$book->image)}}" class="img-responsive center-block"></a>
+                          <h4 class="text-center">{{$book->title}}</h4>
+                        </div>
+                      
                       </div>
-                     
-                    </div>
                     @endforeach
                     
           
