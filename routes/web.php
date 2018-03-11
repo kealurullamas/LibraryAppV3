@@ -43,3 +43,6 @@ Route::get('admin/login','Auth\AdminLoginController@showLoginForm')->name('admin
 Route::post('admin/login','Auth\AdminLoginController@login')->name('admin.login.submit');
 Route::get('admin/logout','Auth\AdminLoginController@login')->name('admin.logout');
 Route::resource('/admin','AdminController');
+
+
+Route::resource('BookMonitoring','BookMonitoringController');

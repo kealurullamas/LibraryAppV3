@@ -19,8 +19,9 @@
 </head>
 <body>
     <div id="app">
-       @include('Inc.nav')
+       @include('Inc.admin_nav')
        @include('Inc.messages');
+       @include('Inc.side_nav')
         @yield('content')
         @include('Layouts.footer')
     </div>

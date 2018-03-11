@@ -3,29 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\BooksRequest;
 use App\BookAccepts;
-use Carbon\Carbon;
-
-class BookAcceptsController extends Controller
+class BookMonitoringController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function __construct()
     {
         $this->middleware('auth:admin');
     }
-    
     public function index()
     {
-        //
-
-        $book_accepts=BooksRequest::where('status','=','Accepted')->paginate(10);
-        return view('admin.bookaccepts')->with('book_accepts',$book_accepts);
+        $books=BookAccepts::paginate(6);
+        return view('admin.bookmonitoring')->with('books',$books);
     }
 
     /**
@@ -47,22 +40,6 @@ class BookAcceptsController extends Controller
     public function store(Request $request)
     {
         //
-        $due=carbon::now()->addDays(7);
-        $bookreq=BooksRequest::find($request->input('id'));
-        $bookreq->delete();
-
-        if($request->input('status')=='Received')
-        {
-            
-            $accept=new BookAccepts();
-            $accept->user_id=$request->input('uid');
-            $accept->book_id=$request->input('bookid');
-            $accept->due_date=$due;
-            $accept->save();
-
-            return redirect('BookAccepts')->with('success','Book has been Received');
-        }
-        return redirect('BookAccepts')->with('error','Book Receiving was cancelled');
     }
 
     /**
