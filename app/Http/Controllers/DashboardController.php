@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Books;
 use App\User;
 use App\BooksRequest;
+use Carbon\Carbon;
 class DashboardController extends Controller
 {
     /**
@@ -29,8 +30,12 @@ class DashboardController extends Controller
         $book=Books::find(2);
         $user->books()->attach($book->id);*/
         if(!auth()->guest()){
-            $user=User::find(Auth()->user()->id);
-            return view('dashboard')->with('user',$user);
+            $data=[
+                'user'=>User::find(Auth()->user()->id),
+                'dayBefore'=>carbon::now()->addDays(7)->toDateString()
+            ];
+            
+            return view('dashboard')->with($data);
         }
         else
         {

@@ -6,6 +6,10 @@
         <h1>{{$books->title}}</a></h1>
         <h6>{{$books->author}}</h6>
         <h5>{{$books->description}}</h5>
-        <a href="{{route('BookRequest.show',$books->id)}}" class="btn btn-primary">Request</a>
+        {!!Form::open(['action'=>'BookRequestsController@store' ,'method'=>'POST'])!!}
+            {{Form::hidden('bookid',$books->id)}}
+            {{Form::hidden('bookname',$books->title)}}
+            {{Form::submit('Submit',['class'=>'btn btn-primary'])}} 
+        {!!Form::close()!!}
     </div>
 @endsection

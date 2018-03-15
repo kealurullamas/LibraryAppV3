@@ -47,7 +47,7 @@ class BookAcceptsController extends Controller
     public function store(Request $request)
     {
         //
-        $due=carbon::now()->addDays(7);
+        $due=carbon::now()->addDays(7)->toDateString();
         $bookreq=BooksRequest::find($request->input('id'));
         $bookreq->delete();
 

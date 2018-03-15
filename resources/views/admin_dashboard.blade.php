@@ -29,7 +29,7 @@
                         <tbody>
                             @if(count($book_requests)>0)
                                 @foreach($book_requests as $bookreq)
-                                    @if($bookreq->status != 'Accepted')
+                                    @if($bookreq->status != 'Accepted'||'Rejected')
                                         <tr>
                                             <td><img src="{{asset('images/'.$bookreq->book->image)}}" class='img-thumbnail'></td>
                                             <td>{{$bookreq->book->title}}</td>
