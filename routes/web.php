@@ -20,7 +20,9 @@ Route::get('/index','PagesController@index')->name('index');
 Route::get('/about','PagesController@about')->name('about');
 Route::get('/contact','PagesController@contact')->name('contact');
 Route::get('/faq','PagesController@faqs')->name('faq');
-Route::post('books/search','BooksController@search');
+Route::get('/book','PagesController@book')->name('book');
+Route::get('/book/show/{id}','PagesController@bookShow')->name('bookShow');
+Route::post('books/search','PagesController@bookSearch');
 Route::resource('/books','BooksController');
 Auth::routes();
 

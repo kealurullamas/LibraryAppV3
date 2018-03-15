@@ -20,12 +20,12 @@
 					<li class="grid-tile">
 						<div class="item">
                             <div class="item-img">
-                                    <img class="bookImg" src="{{asset('images/'.$book->image)}}">
+                                    <img class="bookImg" src="{{asset('storage/images/'.$book->image)}}">
                             </div>
 							<div class="item-pnl">
 								<div class="pnl-wrapper">
 									<div class="pnl-description">
-                                        <span class="pnl-label"><a href="{{route('books.show',$book->id)}}">{{$book->title}}</a></span>
+                                        <span class="pnl-label"><a href="{{route('bookShow',$book->id)}}">{{$book->title}}</a></span>
                                         <h5>{{$book->author}}</h5>
 									</div>
 									

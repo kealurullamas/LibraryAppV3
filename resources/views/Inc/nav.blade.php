@@ -4,7 +4,7 @@
         <div class="row row1">
             <ul class="largenav pull-right">
                 <li class="upper-links"><a class="links" href="{{route('index')}}">Home</a></li>
-                <li class="upper-links"><a class="links" href="{{route('books.index')}}">Books</a></li>
+                <li class="upper-links"><a class="links" href="{{route('book')}}">Books</a></li>
                 <li class="upper-links"><a class="links" href="{{route('about')}}">About Us</a></li>
                 <li class="upper-links"><a class="links" href="{{route('faq')}}">FAQ</a></li>
                 @guest
@@ -60,7 +60,7 @@
             </div>
             <div class="flipkart-navbar-search smallsearch col-sm-10 col-xs-11">
                 <div class="row">
-                    {!!Form::open(['action'=>'BooksController@search','method'=>'POST'])!!}
+                    {!!Form::open(['action'=>'PagesController@bookSearch','method'=>'POST'])!!}
                         {{Form::text('book','',['placeholder'=>'Search for a book or author...','class'=>'flipkart-navbar-input col-xs-11'])}}
                         <button class="flipkart-navbar-button col-xs-1">
                             <svg width="15px" height="15px">

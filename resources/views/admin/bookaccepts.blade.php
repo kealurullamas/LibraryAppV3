@@ -30,7 +30,7 @@
                                 @foreach($book_accepts as $bookreq)
                    
                                         <tr>
-                                            <td><img src="{{asset('images/'.$bookreq->book->image)}}" class='img-thumbnail'></td>
+                                            <td><img src="{{asset('storage/images/'.$bookreq->book->image)}}" class='img-thumbnail'></td>
                                             <td>{{$bookreq->book->title}}</td>
                                             <td><a href="{{route('admin.show',$bookreq->user->id)}}">{{$bookreq->user->name}}</a></td>
                                             <td>{{$bookreq->status}}</td>

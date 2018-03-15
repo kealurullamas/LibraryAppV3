@@ -25,7 +25,7 @@
                         <tbody>
                         @foreach($user->bookRequests as $users)
                             <tr>
-                                <td><img src="{{asset('images/'.$users->book->image)}}" class='img-thumbnail'></td>
+                                <td><img src="{{asset('storage/images/'.$users->book->image)}}" class='img-thumbnail'></td>
                                 <td>{{$users->book->title}}</td>
                                 <td>{{$users->created_at}}</td>
                                 <td>{{$users->status}}</td>
@@ -62,7 +62,7 @@
                             <tbody>
                             @foreach($user->bookAccepts as $accepts)
                                 <tr>
-                                   <td><img src="{{asset('images/'.$accepts->book->image)}}" class='img-thumbnail'></td>
+                                   <td><img src="{{asset('storage/images/'.$accepts->book->image)}}" class='img-thumbnail'></td>
                                    <td>{{$accepts->book->title}}</td>
                                    <td>{{$accepts->created_at}}</td>
                                    @if($accepts->due_date==$dayBefore)

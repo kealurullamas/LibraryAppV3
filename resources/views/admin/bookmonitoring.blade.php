@@ -29,7 +29,7 @@
                                     @foreach($books as $book)
                        
                                             <tr>
-                                                <td><img src="{{asset('images/'.$book->book->image)}}" class='img-thumbnail'></td>
+                                                <td><img src="{{asset('storage/images/'.$book->book->image)}}" class='img-thumbnail'></td>
                                                 <td>{{$book->book->title}}</td>
                                                 <td><a href="{{route('admin.show',$book->user->id)}}">{{$book->user->name}}</a></td>
                                                 <td>{{$book->due_date}}</td>

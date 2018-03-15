@@ -12,22 +12,18 @@ class BooksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     public function index()
     {
-        //
-        //$books= Books::all();
-        $books=Books::orderBy('id','desc')->paginate(6);
-
-        return view('Pages.books')->with('books',$books);
+        
     }
 
     public function search(Request $request)
     {
-        $book_search=$request->input('book');
-        $book=Books::where('title','LIKE','%'.$book_search.'%')->paginate(100);
-      
-        return view('Pages.books')->with('books',$book);
+        
     }
 
     /**
@@ -38,7 +34,7 @@ class BooksController extends Controller
     public function create()
     {
         //
-       
+       return view('admin.addBook');
     }
 
     /**
@@ -50,6 +46,39 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'bookTitle'=>'required',
+            'bookAuthor'=>'required',
+            'bookPublisher'=>'required',
+            'bookReference'=>'required',
+            'bookDescription'=>'required',
+            'bookImage'=>'image|nullable|max:1999'
+        ]);
+
+        if($request->hasfile('bookImage')){
+
+            $filenamewithtext=$request->file('bookImage')->getClientOriginalName();
+
+            $filename=pathinfo($filenamewithtext,PATHINFO_FILENAME);
+
+            $extension=$request->file('bookImage')->getClientOriginalExtension();
+
+            $filenametostore=$filename.'_'.time().'.'.$extension;
+
+            $path=$request->file('bookImage')->storeAs('public/images',$filenametostore);
+        
+        }else{
+            $filenametostore='noname.jpg';
+        }
+
+        $book=new Books;
+        $book->title=$request->input('bookTitle');
+        $book->author=$request->input('bookAuthor');
+        $book->publisher=$request->input('bookPublisher');
+        $book->ref=$request->input('bookReference');
+        $book->description=$request->input('bookDescription');
+        $book->image=$filenametostore;
+        $book->save();
     }
 
     /**
@@ -61,8 +90,7 @@ class BooksController extends Controller
     public function show($id)
     {
         //
-        $book=Books::find($id);
-        return view('Books.views')->with('books',$book);
+        
     }
 
     /**

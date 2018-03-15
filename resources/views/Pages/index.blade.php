@@ -3,12 +3,7 @@
 @section('content')
     <div class="Searchcontainer">
         <h1 class="title">Sotero H. Laurel Academic Resource Center</h1>
-        {!!Form::open(['action'=>"BooksController@search",'method'=>'POST'])!!}
-        <!--{{Form::label('title','Search A book')}} 
-        {{Form::text('book','',['placeholder'=>'Search for a book or author...', 'class'=>'searchBox'])}}
-        {{Form::submit('Search',['class'=>'btn btn-primary-search'])}}
-        {!!Form::close()!!} 
-        -->
+
         <div class="container">
             <div class="row" id="slider-text">
               <div class="col-md-6" >
@@ -31,7 +26,7 @@
                       @if($book['id']==$books[0]['id'])
                         <div class="item active">
                           <div class="col-xs-12 col-sm-6 col-md-2">
-                              <a href="#"><img src="{{asset('images/'.$book->image)}}" class="img-responsive center-block"></a>
+                              <a href="#"><img src="{{asset('storage/images/'.$book->image)}}" class="img-responsive center-block"></a>
                               <h4 class="text-center"></h4>
                             </div>
                         </div>

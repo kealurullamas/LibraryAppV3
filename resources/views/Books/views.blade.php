@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="Searchcontainer">
-        <img src="{{asset('images/'.$books->image)}}">
+        <img src="{{asset('storage/images/'.$books->image)}}">
         <h1>{{$books->title}}</a></h1>
         <h6>{{$books->author}}</h6>
         <h5>{{$books->description}}</h5>
