@@ -18,7 +18,8 @@ class BooksController extends Controller
     }
     public function index()
     {
-        
+        $books=Books::paginate(10);
+        return view('admin.books')->with('books',$books);
     }
 
     public function search(Request $request)
@@ -79,6 +80,8 @@ class BooksController extends Controller
         $book->description=$request->input('bookDescription');
         $book->image=$filenametostore;
         $book->save();
+
+        return redirect('books.index');
     }
 
     /**
@@ -93,6 +96,10 @@ class BooksController extends Controller
         
     }
 
+    public function showAllBooks()
+    {
+       
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -102,6 +109,8 @@ class BooksController extends Controller
     public function edit($id)
     {
         //
+        $book=Books::find($id);
+        return view('admin.addBook')->with('book',$book);
     }
 
     /**
