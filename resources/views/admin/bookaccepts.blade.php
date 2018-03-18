@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row">
+<div class="admincontainer">
+    <div>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Admin Dashboard <a href="#" class="btn btn-primary">Book Accepts</a></div>

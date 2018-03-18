@@ -84,6 +84,48 @@ input[type=text]:focus {
   color: #8C0000 !important;
 }
 
+.addbook-formgroup {
+  width: 45.7vw !important;
+}
+
+.addbook-textbox {
+  width: 45.7vw !important;
+}
+
+.addbook-desc {
+  width: 45.7vw !important;
+}
+
+.addbook-container {
+  min-height: 81.16vh !important;
+  margin-left: 23vw !important;
+  margin-right: 10vw !important;
+  -ms-flex-line-pack: center !important;
+      align-content: center !important;
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
+}
+
+.add-book-form {
+  border-radius: 10px;
+  border: 2px solid #8c0000;
+  padding: 20px;
+  width: 48.7vw !important;
+}
+
+.admincontainer {
+  min-height: 79.16vh;
+  height: 100% !important;
+  max-width: 70vw !important;
+  margin-top: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 10px;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
 .Searchcontainer {
   min-height: 76.16vh;
   height: 100% !important;
@@ -109,6 +151,13 @@ input[type=text]:focus {
 }
 
 @media only screen and (max-width: 360px) {
+  .add-book-form {
+    border-radius: 25px;
+    border: 2px solid red;
+    padding: 20px;
+    min-width: 5vw !important;
+  }
+
   .Logincontainer {
     height: 100% !important;
     max-width: 90vw !important;
