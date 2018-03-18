@@ -23,16 +23,15 @@ class AdminController extends Controller
 
     public function admin()
     {
-        $book_requests=BooksRequest::where('status','!=','Accepted')->orderBy('created_at','desc')->paginate(5);
-       //s return $book_requests;
+        //gets all pending book requests
+        $book_requests=BooksRequest::where('status','=','pending')->orderBy('created_at','desc')->paginate(5);
         return view('admin_dashboard')->with('book_requests',$book_requests);
     }
     public function index()
     {
-        //
-        $book_requests=BooksRequest::where('status','!=','Accepted')->orderBy('created_at','desc')->paginate(5);
-        //s return $book_requests;
-        return view('admin_dashboard')->with('book_requests',$book_requests);
+        // /
+        // $book_requests=BooksRequest::where('status','!=','Accepted')->orderBy('created_at','desc')->paginate(5);
+        // return view('admin_dashboard')->with('book_requests',$book_requests);
     }
 
     /**
@@ -65,6 +64,7 @@ class AdminController extends Controller
     public function show($id)
     {
         //
+      //find the user from the list of users
       $user=User::find($id);
       return view('admin.users')->with('user',$user);
     }

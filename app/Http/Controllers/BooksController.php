@@ -53,6 +53,7 @@ class BooksController extends Controller
             'bookPublisher'=>'required',
             'bookReference'=>'required',
             'bookDescription'=>'required',
+            'bookSupply'=>'required',
             'bookImage'=>'image|nullable|max:1999'
         ]);
 
@@ -79,9 +80,10 @@ class BooksController extends Controller
         $book->ref=$request->input('bookReference');
         $book->description=$request->input('bookDescription');
         $book->image=$filenametostore;
+        $book->supply=$request->input('bookSupply');
         $book->save();
 
-        return redirect('books.index');
+        return redirect('books')->with('success','Book '.$book->title.' has been added');
     }
 
     /**
@@ -110,7 +112,7 @@ class BooksController extends Controller
     {
         //
         $book=Books::find($id);
-        return view('admin.addBook')->with('book',$book);
+        return view('admin.editBook')->with('book',$book);
     }
 
     /**
@@ -123,6 +125,43 @@ class BooksController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[
+            'bookTitle'=>'required',
+            'bookAuthor'=>'required',
+            'bookPublisher'=>'required',
+            'bookReference'=>'required',
+            'bookDescription'=>'required',
+            'bookSupply'=>'required',
+            'bookImage'=>'image|nullable|max:1999'
+        ]);
+
+        if($request->hasfile('bookImage')){
+
+            $filenamewithtext=$request->file('bookImage')->getClientOriginalName();
+
+            $filename=pathinfo($filenamewithtext,PATHINFO_FILENAME);
+
+            $extension=$request->file('bookImage')->getClientOriginalExtension();
+
+            $filenametostore=$filename.'_'.time().'.'.$extension;
+
+            $path=$request->file('bookImage')->storeAs('public/images',$filenametostore);
+        
+        }else{
+            $filenametostore='noname.jpg';
+        }
+
+        $book=Books::find($id);
+        $book->title=$request->input('bookTitle');
+        $book->author=$request->input('bookAuthor');
+        $book->publisher=$request->input('bookPublisher');
+        $book->ref=$request->input('bookReference');
+        $book->description=$request->input('bookDescription');
+        $book->image=$filenametostore;
+        $book->supply=$request->input('bookSupply');
+        $book->save();
+
+        return redirect('books')->with('success','Book '.$book->title.' has been updated');
     }
 
     /**
@@ -134,5 +173,8 @@ class BooksController extends Controller
     public function destroy($id)
     {
         //
+        $book=Books::find($id);
+        $book->delete();
+        return redirect('books')->with('error','Book '.$book->title.' has been deleted');
     }
 }

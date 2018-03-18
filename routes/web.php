@@ -48,3 +48,4 @@ Route::resource('/admin','AdminController');
 
 
 Route::resource('BookMonitoring','BookMonitoringController');
+Route::post('/BookMonitoringSearch','BookMonitoringController@search');

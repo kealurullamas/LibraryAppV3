@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Admin Dashboard <a href="#" class="btn btn-primary">Book Accepts</a></div>
+                <div class="panel-heading">Admin Dashboard</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -14,7 +14,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    Book Requests
+                    Book Accepts
                     <table class="table">
                         <thead class="thead-dark">
                         <tr>
@@ -36,19 +36,17 @@
                                             <td>{{$bookreq->status}}</td>
                                             <!--<td><a href="" class="btn btn-success">Accept</td>-->
                                             <td>
-                                                {!!Form::open(['action'=>'BookAcceptsController@store','method'=>'POST'])!!}
-                                                    {{Form::hidden('id',$bookreq->id)}}
-                                                    {{Form::hidden('uid',$bookreq->user->id)}}
-                                                    {{Form::hidden('bookid',$bookreq->book->id)}}
+                                                {!!Form::open(['action'=>['BookAcceptsController@update',$bookreq->id],'method'=>'POST'])!!}
                                                     {{Form::hidden('status','Received')}}
                                                     {{Form::submit('Received',['class'=>'btn btn-success'])}}
+                                                    {{Form::hidden('_method','PUT')}}
                                                 {!!Form::close()!!}
                                             </td>
                                             <td>
-                                                {!!Form::open(['action'=>'BookAcceptsController@store','method'=>'POST'])!!}
-                                                    {{Form::hidden('id',$bookreq->id)}}
+                                                {!!Form::open(['action'=>['BookAcceptsController@update',$bookreq->id],'method'=>'POST'])!!}
                                                     {{Form::hidden('status','Cancelled')}}
                                                     {{Form::submit('Cancelled',['class'=>'btn btn-danger'])}}
+                                                    {{Form::hidden('_method','PUT')}}
                                                 {!!Form::close()!!}
                                             </td>
                                         </tr>

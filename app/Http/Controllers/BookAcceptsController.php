@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\BooksRequest;
 use App\BookAccepts;
+use App\Books;
 use Carbon\Carbon;
 
 class BookAcceptsController extends Controller
@@ -23,7 +24,6 @@ class BookAcceptsController extends Controller
     public function index()
     {
         //
-
         $book_accepts=BooksRequest::where('status','=','Accepted')->paginate(10);
         return view('admin.bookaccepts')->with('book_accepts',$book_accepts);
     }
@@ -46,23 +46,6 @@ class BookAcceptsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $due=carbon::now()->addDays(7)->toDateString();
-        $bookreq=BooksRequest::find($request->input('id'));
-        $bookreq->delete();
-
-        if($request->input('status')=='Received')
-        {
-            
-            $accept=new BookAccepts();
-            $accept->user_id=$request->input('uid');
-            $accept->book_id=$request->input('bookid');
-            $accept->due_date=$due;
-            $accept->save();
-
-            return redirect('BookAccepts')->with('success','Book has been Received');
-        }
-        return redirect('BookAccepts')->with('error','Book Receiving was cancelled');
     }
 
     /**
@@ -96,7 +79,23 @@ class BookAcceptsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        //Update the status of book from accepted to received or cancelled
+        $bookreq=BooksRequest::find($id);
+        $user->notify(new NotifyUser(BooksRequest::where('id','=',$id)->firstorfail()));
+        if($request->input('status')=='Received'){
+           
+            $due=Carbon::now()->addDays(7)->toDateString();
+            $bookreq->status=$request->input('status');
+            $bookreq->due_date=$due;
+            $bookreq->save();
+            return redirect('BookAccepts')->with('success','Book '.$bookreq->book->title.' has been Received');
+        }else{
+            $book=Books::find($bookreq->book->id);
+            $book->increment('supply','1');
+            $bookreq->delete();
+            return redirect('BookAccepts')->with('error','Book '.$bookreq->book->title.' has been Cancelled');
+        }
     }
 
     /**

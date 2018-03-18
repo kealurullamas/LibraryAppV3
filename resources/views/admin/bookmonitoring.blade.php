@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Admin Dashboard <a href="#" class="btn btn-primary">Book Accepts</a></div>
+                    <div class="panel-heading">Admin Dashboard</div>
     
                     <div class="panel-body">
                         @if (session('status'))
@@ -13,7 +13,13 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        Book Requests
+                        Book Monitoring
+                        <br><br>
+                        {!!Form::open(['action'=>'BookMonitoringController@search','method'=>'POST'])!!}
+                        {{Form::text('user','',['placeholder'=>"Enter Borrower's Name",'class'=>'form-control'])}}
+                        <br>
+                        {{Form::submit('Search',['class'=>'btn btn-primary'])}}
+                        {!!Form::close()!!}
                         <table class="table">
                             <thead class="thead-dark">
                             <tr>

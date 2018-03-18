@@ -30,8 +30,9 @@ class DashboardController extends Controller
         $book=Books::find(2);
         $user->books()->attach($book->id);*/
         if(!auth()->guest()){
+            $user=User::find(Auth()->user()->id);
             $data=[
-                'user'=>User::find(Auth()->user()->id),
+                'bookrequest'=>BooksRequest::orderBy('status','desc')->paginate(3),
                 'dayBefore'=>carbon::now()->addDays(7)->toDateString()
             ];
             
@@ -44,8 +45,6 @@ class DashboardController extends Controller
     }
     public function admin()
     {
-        $book_requests=BooksRequest::where('status','!=','Accepted')->orderBy('created_at','desc')->paginate(5);
-       //s return $book_requests;
-        return view('admin_dashboard')->with('book_requests',$book_requests);
+        
     }
 }

@@ -46,7 +46,7 @@ class BookRequestsController extends Controller
         //here we save the request book info to DB
         $book=Books::find($request->input('bookid'));
         if($book->supply>0){
-            $book->decrement('supply','1');
+            $book->decrement('supply',1);
             $book_request=new BooksRequest();
             $book_request->user_id=Auth()->user()->id;
             $book_request->book_id=$request->input('bookid');
@@ -59,7 +59,8 @@ class BookRequestsController extends Controller
             
             return redirect()->back()->with('success','Book Request of '.$request->input('bookname').'has been received');
         }else{
-            $bookreturn=BookAccepts::where('book_id',$request->input('bookid'))->first();
+            $bookreturn=BooksRequest::where(['book_id'=>$request->input('bookid'),
+            'status'=>'Received'])->first();
             if(!empty($bookreturn)){
                 return redirect()->back()->with('error','The supply of the book '.$request->input('bookname').' has been exhausted. Please wait until one of the borrower returns the book:
                 Expected Date of return: '.$bookreturn->due_date);
@@ -112,7 +113,7 @@ class BookRequestsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Updates the book from pending to accepted and waiting for receiving
         $book=BooksRequest::find($id);
         $user=User::find($book->user_id);
         $user->notify(new NotifyUser(BooksRequest::where('id','=',$book->id)->firstorfail()));
@@ -122,6 +123,8 @@ class BookRequestsController extends Controller
             return redirect('admin_view')->with('success','Book Request ('.$book->book->title.') of '.$book->user->name.' has been Accepted');
         }
         else{
+            $books=Books::find($book->book_id);
+            $books->increment('supply','1');
             $book->status=$request->input('status');
             $book->save();
             return redirect('admin_view')->with('error','Book Request');

@@ -33,7 +33,7 @@
                       @else
                       <div class="item">
                         <div class="col-xs-12 col-sm-6 col-md-2">
-                          <a href="#"><img src="{{asset('images/'.$book->image)}}" class="img-responsive center-block"></a>
+                          <a href="#"><img src="{{asset('storage/images/'.$book->image)}}" class="img-responsive center-block"></a>
                           <h4 class="text-center">{{$book->title}}</h4>
                         </div>
                       </div>

@@ -23,17 +23,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($user->bookRequests as $users)
+                        @foreach($bookrequest as $requests)
+                            
                             <tr>
-                                <td><img src="{{asset('storage/images/'.$users->book->image)}}" class='img-thumbnail'></td>
-                                <td>{{$users->book->title}}</td>
-                                <td>{{$users->created_at}}</td>
-                                <td>{{$users->status}}</td>
+                                <td><img src="{{asset('storage/images/'.$requests->book->image)}}" class='img-thumbnail'></td>
+                                <td>{{$requests->book->title}}</td>
+                                <td>{{$requests->created_at}}</td>
+                                <td>{{$requests->status}}</td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    
+                    {{$bookrequest->links()}}
                 </div>
             </div>
         </div>
@@ -60,21 +61,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($user->bookAccepts as $accepts)
-                                <tr>
-                                   <td><img src="{{asset('storage/images/'.$accepts->book->image)}}" class='img-thumbnail'></td>
-                                   <td>{{$accepts->book->title}}</td>
-                                   <td>{{$accepts->created_at}}</td>
-                                   @if($accepts->due_date==$dayBefore)
-                                    <td><p class="text-danger">{{$accepts->due_date}}</p></td>
-                                   @else
-                                    <td><p class="text-success">{{$accepts->due_date}}</p></td>
-                                   @endif
-                                </tr>
+                            @foreach($bookrequest as $accepts)
+                                @if($accepts->status=='Received')
+                                    <tr>
+                                    <td><img src="{{asset('storage/images/'.$accepts->book->image)}}" class='img-thumbnail'></td>
+                                    <td>{{$accepts->book->title}}</td>
+                                    <td>{{$accepts->created_at}}</td>
+                                    @if($accepts->due_date==$dayBefore)
+                                        <td><p class="text-danger">{{$accepts->due_date}}</p></td>
+                                    @else
+                                        <td><p class="text-success">{{$accepts->due_date}}</p></td>
+                                    @endif
+                                    </tr>
+                                @endif
                             @endforeach
                             </tbody>
                         </table>
-                        
+                        {{$bookrequest->links()}}
                     </div>
                 </div>
             </div>

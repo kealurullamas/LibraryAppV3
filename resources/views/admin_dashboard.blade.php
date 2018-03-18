@@ -5,8 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Admin Dashboard <a href="{{route('BookAccepts.index')}}" class="btn btn-primary">Book Accepts</a>
-                    <a class="btn btn-primary" href="#">Book Monitoring</a>
+                <div class="panel-heading">Admin Dashboard
                 </div>
 
                 <div class="panel-body">
@@ -29,9 +28,9 @@
                         <tbody>
                             @if(count($book_requests)>0)
                                 @foreach($book_requests as $bookreq)
-                                    @if($bookreq->status != 'Accepted'||'Rejected')
+                                    @if($bookreq->status=='pending')
                                         <tr>
-                                            <td><img src="{{asset('images/'.$bookreq->book->image)}}" class='img-thumbnail'></td>
+                                            <td><img src="{{asset('storage/images/'.$bookreq->book->image)}}" class='img-thumbnail'></td>
                                             <td>{{$bookreq->book->title}}</td>
                                             <td><a href="{{route('admin.show',$bookreq->user->id)}}">{{$bookreq->user->name}}</a></td>
                                             <td>{{$bookreq->status}}</td>

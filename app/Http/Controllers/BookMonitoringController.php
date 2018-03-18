@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\BookAccepts;
+use App\BooksRequest;
+use App\User;
 class BookMonitoringController extends Controller
 {
     /**
@@ -17,7 +19,16 @@ class BookMonitoringController extends Controller
     }
     public function index()
     {
-        $books=BookAccepts::paginate(6);
+        //get all book requests with status received
+        $books=BooksRequest::where('status','=','Received')->paginate(6);
+        return view('admin.bookmonitoring')->with('books',$books);
+    }
+    
+    public function search(Request $request)
+    {
+        //search through all book requests with status received
+        $user=User::where('name','LIKE','%'.$request->input('user').'%')->firstOrFail();
+        $books=BooksRequest::where(['status'=>'Received','user_id'=>$user->id])->paginate(100);
         return view('admin.bookmonitoring')->with('books',$books);
     }
 

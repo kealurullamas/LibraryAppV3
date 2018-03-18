@@ -3,8 +3,13 @@
         <div class="container">
             <div class="row row1">
                 <ul class="largenav pull-right">
-                    <li class="upper-links"><a class="links" href="{{route('admin_view')}}">Home</a></li>
+                   
               
+                    @guest
+                    @endguest
+                    @auth('admin')
+
+                        <li class="upper-links"><a class="links" href="{{route('admin_view')}}">Home</a></li>
                         <li class="upper-links dropdown">
                             <a href="#" class="links" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -29,7 +34,7 @@
                                 </li>
                             </ul>
                         </li>
-
+                    @endauth
                 </ul>
             </div>
             <div class="row row2">

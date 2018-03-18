@@ -48161,11 +48161,14 @@ var render = function() {
               },
               [
                 _c("small", [
-                  _vm._v("Your Book request of "),
+                  _vm._v("Your Book requesttosss of "),
                   _c("strong", [
                     _vm._v(_vm._s(notification.data.bookreq.title))
                   ]),
-                  _vm._v(" has been updated")
+                  _vm._v(" has been  "),
+                  _c("strong", [
+                    _vm._v(_vm._s(notification.data.bookreq.status))
+                  ])
                 ])
               ]
             )
@@ -48173,9 +48176,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _vm.notifications.length == 0
-          ? _c("li", [
-              _vm._v("\n            There is no new Notification\n        ")
-            ])
+          ? _c("li", [_c("small", [_vm._v(" There is no new Notification")])])
           : _vm._e()
       ],
       2
