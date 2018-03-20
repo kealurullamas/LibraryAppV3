@@ -48161,13 +48161,13 @@ var render = function() {
               },
               [
                 _c("small", [
-                  _vm._v("Your Book requesttosss of "),
+                  _vm._v("Your Book requesttosssesese of "),
                   _c("strong", [
-                    _vm._v(_vm._s(notification.data.bookreq.title))
+                    _vm._v(_vm._s(notification.data.request.book.title))
                   ]),
-                  _vm._v(" has been  "),
+                  _vm._v(" has been "),
                   _c("strong", [
-                    _vm._v(_vm._s(notification.data.bookreq.status))
+                    _vm._v(_vm._s(notification.data.request.status))
                   ])
                 ])
               ]

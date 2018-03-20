@@ -43,14 +43,19 @@ class NotifyUser extends Notification
      */
     public function toDatabase($notifiable)
     {
-        return ['bookreq'=>$this->bookreq->book];
+        return [
+            'request'=>$this->bookreq,
+            'bookreq'=>$this->bookreq->book,
+                
+            ];
     }
 
     public function toBroadcast($notifiable)
     {
         return [
             'data'=>[
-                'bookreq'=>$this->bookreq->book
+                'bookreq'=>$this->bookreq->book,
+                'request'=>$this->bookreq,
                 ]
             ];
     }

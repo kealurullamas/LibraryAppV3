@@ -15,7 +15,7 @@
         <ul class="dropdown-menu" role="menu">
             <li v-for="notification in notifications">
                 <a href="#" class="profile-links" v-on:click="MarkAsRead(notification)">
-                    <small>Your Book requesttosss of <strong>{{notification.data.bookreq.title}}</strong> has been  <strong>{{notification.data.bookreq.status}}</strong></small>
+                    <small>Your Book requesttosssesese of <strong>{{notification.data.request.book.title}}</strong> has been <strong>{{notification.data.request.status}}</strong></small>
                 </a>
             </li>
             <li v-if="notifications.length==0">

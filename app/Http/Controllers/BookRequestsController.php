@@ -116,10 +116,11 @@ class BookRequestsController extends Controller
         //Updates the book from pending to accepted and waiting for receiving
         $book=BooksRequest::find($id);
         $user=User::find($book->user_id);
-        $user->notify(new NotifyUser(BooksRequest::where('id','=',$book->id)->firstorfail()));
+       
         if($request->input('status')=='Accepted'){
             $book->status=$request->input('status');
             $book->save();
+            $user->notify(new NotifyUser(BooksRequest::where('id','=',$book->id)->firstorfail()));
             return redirect('admin_view')->with('success','Book Request ('.$book->book->title.') of '.$book->user->name.' has been Accepted');
         }
         else{
@@ -127,6 +128,7 @@ class BookRequestsController extends Controller
             $books->increment('supply','1');
             $book->status=$request->input('status');
             $book->save();
+            $user->notify(new NotifyUser(BooksRequest::where('id','=',$book->id)->firstorfail()));
             return redirect('admin_view')->with('error','Book Request');
         }        
        

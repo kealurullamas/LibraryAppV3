@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\BooksRequest;
 use App\BookAccepts;
 use App\Books;
+use App\User;
 use Carbon\Carbon;
+use App\Notifications\NotifyUser;
 
 class BookAcceptsController extends Controller
 {
@@ -82,13 +84,14 @@ class BookAcceptsController extends Controller
         
         //Update the status of book from accepted to received or cancelled
         $bookreq=BooksRequest::find($id);
-        $user->notify(new NotifyUser(BooksRequest::where('id','=',$id)->firstorfail()));
+        $user=User::find($bookreq->user_id);
+        
         if($request->input('status')=='Received'){
-           
             $due=Carbon::now()->addDays(7)->toDateString();
             $bookreq->status=$request->input('status');
             $bookreq->due_date=$due;
             $bookreq->save();
+            $user->notify(new NotifyUser(BooksRequest::where('id','=',$id)->firstorfail()));
             return redirect('BookAccepts')->with('success','Book '.$bookreq->book->title.' has been Received');
         }else{
             $book=Books::find($bookreq->book->id);
