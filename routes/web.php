@@ -48,4 +48,6 @@ Route::resource('/admin','AdminController');
 
 
 Route::resource('BookMonitoring','BookMonitoringController');
-Route::post('/BookMonitoringSearch','BookMonitoringController@search');
+Route::get('NotifyDue/{id}','BookMonitoringController@notifyDue')->name('notify');
+Route::get('/returns/{id}','BookMonitoringController@returns')->name('return');
+Route::post('/BookMonitoring/Search','BookMonitoringController@search');

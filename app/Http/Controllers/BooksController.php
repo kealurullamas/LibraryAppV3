@@ -18,7 +18,7 @@ class BooksController extends Controller
     }
     public function index()
     {
-        $books=Books::paginate(10);
+        $books=Books::orderBy('created_at','desc')->paginate(10);
         return view('admin.books')->with('books',$books);
     }
 

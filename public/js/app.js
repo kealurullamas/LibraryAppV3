@@ -48094,6 +48094,79 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['notifications'],
@@ -48148,32 +48221,69 @@ var render = function() {
       [
         _vm._l(_vm.notifications, function(notification) {
           return _c("li", [
-            _c(
-              "a",
-              {
-                staticClass: "profile-links",
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    _vm.MarkAsRead(notification)
-                  }
-                }
-              },
-              [
-                _c("small", [
-                  _vm._v("Your Book requesttosssesese of "),
-                  _c("strong", [
-                    _vm._v(_vm._s(notification.data.request.book.title))
-                  ]),
-                  _vm._v(" has been "),
-                  _c("strong", [
-                    _vm._v(_vm._s(notification.data.request.status))
-                  ])
-                ])
-              ]
-            )
+            notification.data.request.due_date != null
+              ? _c(
+                  "a",
+                  {
+                    staticClass: "profile-links",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        _vm.MarkAsRead(notification)
+                      }
+                    }
+                  },
+                  [
+                    _c("small", [
+                      _vm._v("Your Book "),
+                      _c("strong", [
+                        _vm._v(_vm._s(notification.data.request.book.title))
+                      ]),
+                      _vm._v(" is due on "),
+                      _c("strong", [
+                        _vm._v(_vm._s(notification.data.request.due_date))
+                      ])
+                    ])
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            notification.data.request.status != "Received"
+              ? _c(
+                  "a",
+                  {
+                    staticClass: "profile-links",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        _vm.MarkAsRead(notification)
+                      }
+                    }
+                  },
+                  [
+                    _c("small", [
+                      _vm._v("Your Book request of "),
+                      _c("strong", [
+                        _vm._v(_vm._s(notification.data.request.book.title))
+                      ]),
+                      _vm._v(" has been "),
+                      _c("strong", [
+                        _vm._v(_vm._s(notification.data.request.status))
+                      ])
+                    ])
+                  ]
+                )
+              : _vm._e()
           ])
         }),
+        _vm._v(" "),
+        _vm.notifications.length > 0
+          ? _c("li", { staticClass: "footer bg-dark text-center" }, [
+              _c("a", { staticClass: "text-light", attrs: { href: "" } }, [
+                _vm._v("View All")
+              ])
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _vm.notifications.length == 0
           ? _c("li", [_c("small", [_vm._v(" There is no new Notification")])])

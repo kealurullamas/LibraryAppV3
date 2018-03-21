@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\BookAccepts;
 use App\BooksRequest;
 use App\User;
+use App\Books;
+use Carbon\Carbon;
+use App\Notifications\NotifyUser;
 class BookMonitoringController extends Controller
 {
     /**
@@ -17,19 +20,61 @@ class BookMonitoringController extends Controller
     {
         $this->middleware('auth:admin');
     }
+    public function notifyDue($id)
+    {
+        $book=BooksRequest::find($id);
+        $user=User::find($book->user_id);
+        $user->notify(new NotifyUser(BooksRequest::where('id','=',$id)->firstorfail()));
+
+        return redirect('BookMonitoring')->with('success','Successfully Notified User');
+    }
+    public function returns($id)
+    {
+        $bookreq=BooksRequest::find($id);
+
+        $book=Books::find($bookreq->book_id);
+        $book->increment('supply','1');
+        $book->save();
+
+        $bookreq->delete();
+        
+
+        return redirect('BookMonitoring')->with('success','Book '.$book->title.' has been returned');
+    }
     public function index()
     {
         //get all book requests with status received
-        $books=BooksRequest::where('status','=','Received')->paginate(6);
-        return view('admin.bookmonitoring')->with('books',$books);
+        $data=[
+            'books'=>BooksRequest::where('status','=','Received')->paginate(6),
+            'today'=>Carbon::now()->addDays(7)->toDateString()
+        ];
+        
+        return view('admin.bookmonitoring')->with($data);
     }
     
     public function search(Request $request)
     {
         //search through all book requests with status received
-        $user=User::where('name','LIKE','%'.$request->input('user').'%')->firstOrFail();
-        $books=BooksRequest::where(['status'=>'Received','user_id'=>$user->id])->paginate(100);
-        return view('admin.bookmonitoring')->with('books',$books);
+        $user=User::where('name','LIKE','%'.$request->input('user').'%')->first();
+        if(!empty($user)){
+            $data=[
+                'books'=>BooksRequest::where(['status'=>'Received','user_id'=>$user->id])->paginate(100),
+                'today'=>Carbon::now()->addDays(7)->toDateString()
+            ];
+            return view('admin.bookmonitoring')->with($data);
+        }
+        else
+        {
+            $data=[
+                'books'=>null,
+                'result'=>$request->input('user'),
+                'today'=>Carbon::now()->addDays(7)->toDateString()
+            ];
+            return view('admin.bookmonitoring')->with($data);
+        
+        }
+        
+        
     }
 
     /**

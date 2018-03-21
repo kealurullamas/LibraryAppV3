@@ -31,14 +31,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @if(count($books)>0)
+                                @if(!empty($books))
                                     @foreach($books as $book)
                        
                                             <tr>
                                                 <td><img src="{{asset('storage/images/'.$book->book->image)}}" class='img-thumbnail'></td>
                                                 <td>{{$book->book->title}}</td>
                                                 <td><a href="{{route('admin.show',$book->user->id)}}">{{$book->user->name}}</a></td>
-                                                <td>{{$book->due_date}}</td>
+                                                @if($today==$book->due_date)
+                                                    <td><p class="text-danger">{{$book->due_date}}</p></td>
+                                                @else
+                                                    <td><p class="text-success">{{$book->due_date}}</p></td>
+                                                @endif
+                                                <td><a href="{{route('return',$book->id)}}" class="btn btn-success">Returned</a></td>
+                                                <td><a href="{{route('notify',$book->id)}}" class="btn btn-primary">Notify Due Date</a></td>
                                                 <!--<td><a href="" class="btn btn-success">Accept</td>-->
                                                 <td>
                                                     {{--  {!!Form::open(['action'=>'BookAcceptsController@store','method'=>'POST'])!!}
@@ -59,10 +65,14 @@
                                             </tr>
                                       
                                     @endforeach
+                                    {{$books->links()}}
+                                @else
+                                <td><p class="text-success">No results found for: {{$result}}</p></td>
                                 @endif
+
                             </tbody>
                         </table>
-                        {{$books->links()}}
+                        
                     </div>
                 </div>
             </div>

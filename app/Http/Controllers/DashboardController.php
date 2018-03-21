@@ -33,6 +33,7 @@ class DashboardController extends Controller
             $user=User::find(Auth()->user()->id);
             $data=[
                 'bookrequest'=>BooksRequest::orderBy('status','desc')->paginate(3),
+                'bookaccepts'=>BooksRequest::where('status','=','Received')->get(),
                 'dayBefore'=>carbon::now()->addDays(7)->toDateString()
             ];
             
