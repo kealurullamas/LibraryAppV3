@@ -62,6 +62,20 @@ input[type=text]:focus {
   margin-right: auto !important;
 }
 
+.center-img {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.book-desc {
+  border-radius: 10px;
+  border: 2px solid #8c0000;
+  padding: 20px;
+  width: 48.7vw !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .searchBox {
   font-size: 20px !important;
   border-radius: 50px 5px 5px 50px !important;
@@ -138,6 +152,18 @@ input[type=text]:focus {
   padding-right: 2vw;
 }
 
+.bookcontainer {
+  min-height: 78.16vh;
+  height: 100% !important;
+  max-width: 70vw !important;
+  margin-top: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 10px;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
 .Logincontainer {
   min-height: 78.3vh;
   height: 100% !important;
@@ -151,6 +177,30 @@ input[type=text]:focus {
 }
 
 @media only screen and (max-width: 360px) {
+  .book-title {
+    font-size: 1.75em;
+  }
+
+  .book-desc {
+    border-radius: 10px;
+    border: 2px solid #8c0000;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 90vw !important;
+  }
+
+  .bookcontainer {
+    min-height: 78.16vh;
+    height: 100% !important;
+    min-width: 100vw !important;
+    margin-top: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 10px;
+    padding-left: 0.01vw;
+    padding-right: 0.01vw;
+  }
+
   .add-book-form {
     border-radius: 25px;
     border: 2px solid red;
