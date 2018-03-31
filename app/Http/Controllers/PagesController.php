@@ -31,14 +31,21 @@ class PagesController extends Controller
     public function book()
     {
         $books=Books::orderBy('id','desc')->paginate(6);
-
-        return view('Pages.books')->with('books',$books);
+        $data=[
+            'books'=>$books,
+            'title'=>null
+        ];
+        return view('Pages.books')->with($data);
     }
     public function bookSearch(Request $request)
     {
         $book_search=$request->input('book');
         $book=Books::where('title','LIKE','%'.$book_search.'%')->paginate(100);
-        return view('Pages.books')->with('books',$book);
+        $data=[
+            'books'=>$book,
+            'title'=>$request->input('book'),
+        ];
+        return view('Pages.books')->with($data);
     }
     public function bookShow($id)
     {
