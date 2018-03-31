@@ -1,7 +1,7 @@
 @extends('Layouts.app')
 
 @section('content')
-    @if(count($books)>0)
+    {{--  @if(count($books)>0)  --}}
         {{--  <div class="container">
             <h1><strong>Books</strong></h1>
         </div>
@@ -15,7 +15,11 @@
         {{$books->links()}}  --}}
         <div class="layout">
 			<section class="inner">
+                    @if($title!=null)
+                    <small>{{count($books)}} results found for: {{$title}}</small>
+                @endif
 				<ul class="grid">
+                    @if(count($books)>0)
                     @foreach($books as $book)
 					<li class="grid-tile">
 						<div class="item">
@@ -34,12 +38,15 @@
 						</div>
                     </li>
                     <!--<div class="centerPaginate"> -->
-                        @endforeach
-                        {{$books->appends(\Request::except('page'))->links()}}
+                    @endforeach
+                    {{$books->appends(\Request::except('page'))->links()}}
+                    @else
+                    <small>0 results found for: {{$title}} </small>
+                    @endif
                     <!--</div> -->
 				</ul>
             </section>
             
 		</div>
-    @endif
+    {{--  @endif  --}}
 @endsection
