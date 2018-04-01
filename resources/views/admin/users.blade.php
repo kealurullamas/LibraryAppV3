@@ -1,7 +1,7 @@
 @extends('Layouts.app')
 
 @section('content')
-<div class="container bootstrap snippet">
+<div class="Searchcontainer bootstrap snippet">
         <div class="row">
             <div class="col-md-15">
             <div class="panel panel-default">
