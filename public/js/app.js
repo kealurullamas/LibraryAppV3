@@ -1009,7 +1009,7 @@ var app = new Vue({
         var _this = this;
 
         var userId = $('meta[name="userId"]').attr('content');
-        axios.post('http://localhost:8080/LibraryApp/public/notification/get').then(function (response) {
+        axios.post('http://localhost/LibraryApp/public/notification/get').then(function (response) {
             _this.notifications = response.data;
         });
 
@@ -48105,68 +48105,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['notifications'],
@@ -48176,8 +48114,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: notification.id
 
             };
-            axios.post("http://localhost:8080/LibraryApp/public/notification/read", data).then(function (response) {
-                window.location.href = "http://localhost:8080/LibraryApp/public/dashboard";
+            axios.post("http://localhost/LibraryApp/public/notification/read", data).then(function (response) {
+                window.location.href = "http://localhost/LibraryApp/public/dashboard";
             });
         }
     }

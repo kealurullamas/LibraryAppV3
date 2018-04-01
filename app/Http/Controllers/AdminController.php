@@ -66,7 +66,15 @@ class AdminController extends Controller
         //
       //find the user from the list of users
       $user=User::find($id);
-      return view('admin.users')->with('user',$user);
+      $bookrequest=BooksRequest::where('user_id','=',$user->id);
+      $requests=$bookrequest->count();
+      $onHand=$bookrequest->where('status','=','received')->count();
+      $data=[
+          'user'=>$user,
+          'requests'=>$requests,
+          'onHand'=>$onHand
+      ];
+      return view('admin.users')->with($data);
     }
 
     /**

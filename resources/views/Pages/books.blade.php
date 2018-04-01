@@ -15,11 +15,10 @@
         {{$books->links()}}  --}}
         <div class="layout">
 			<section class="inner">
-                    @if($title!=null)
-                    <small>{{count($books)}} results found for: {{$title}}</small>
-                @endif
 				<ul class="grid">
                     @if(count($books)>0)
+                        <h4>{{count($books)}} results found for: {{$title}}</h4>
+                        <br>
                     @foreach($books as $book)
 					<li class="grid-tile">
 						<div class="item">
@@ -41,7 +40,9 @@
                     @endforeach
                     {{$books->appends(\Request::except('page'))->links()}}
                     @else
-                    <small>0 results found for: {{$title}} </small>
+                        <div class="container">
+                            <h3>0 results found for: {{$title}} </h3>
+                        </div>
                     @endif
                     <!--</div> -->
 				</ul>

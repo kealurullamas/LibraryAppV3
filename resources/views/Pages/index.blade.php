@@ -26,14 +26,14 @@
                       @if($book['id']==$books[0]['id'])
                         <div class="item active">
                           <div class="col-xs-12 col-sm-6 col-md-2">
-                              <a href="#"><img src="{{asset('storage/images/'.$book->image)}}" class="img-responsive center-block"></a>
-                              <h4 class="text-center"></h4>
+                              <a href="{{route('bookShow',$book->id)}}"><img src="{{asset('storage/images/'.$book->image)}}" class="img-responsive center-block"></a>
+                              <h4 class="text-center">{{$book->title}}</h4>
                             </div>
                         </div>
                       @else
                       <div class="item">
                         <div class="col-xs-12 col-sm-6 col-md-2">
-                          <a href="#"><img src="{{asset('storage/images/'.$book->image)}}" class="img-responsive center-block"></a>
+                          <a href="{{route('bookShow',$book->id)}}"><img src="{{asset('storage/images/'.$book->image)}}" class="img-responsive center-block"></a>
                           <h4 class="text-center">{{$book->title}}</h4>
                         </div>
                       </div>

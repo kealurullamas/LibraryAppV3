@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1 class="faq-title">LIBRARY HOURS AND LOCATION</h1>
-            <img src="{{asset('images/library.png')}}" class="about-us-img">
+            <img src="{{asset('storage/images/library.png')}}" class="about-us-img">
             <h5>
                 Library Hours
                 Monday to Friday,7:00AM-8:00PM

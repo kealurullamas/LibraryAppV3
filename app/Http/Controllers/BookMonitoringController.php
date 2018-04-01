@@ -36,7 +36,7 @@ class BookMonitoringController extends Controller
         $book->increment('supply','1');
         $book->save();
 
-        $bookreq->delete();
+        //$bookreq->delete();
         
 
         return redirect('BookMonitoring')->with('success','Book '.$book->title.' has been returned');

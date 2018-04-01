@@ -43,7 +43,7 @@ Route::resource('BookAccepts','BookAcceptsController');
 Route::get('users/logout','Auth\LoginController@userLogout')->name('user.logout');
 Route::get('admin/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
 Route::post('admin/login','Auth\AdminLoginController@login')->name('admin.login.submit');
-Route::get('admin/logout','Auth\AdminLoginController@login')->name('admin.logout');
+Route::post('admin/logout','Auth\AdminLoginController@logout')->name('admin.logout');
 Route::resource('/admin','AdminController');
 
 
