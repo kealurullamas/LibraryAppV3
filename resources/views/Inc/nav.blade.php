@@ -25,13 +25,13 @@
                             </li>
                                 
                             <li>
-                                <a class="profile-links" href="{{ route('logout') }}"
+                                <a class="profile-links" href="{{ route('users.logout') }}"
                                     onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                                     Logout
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('users.logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </li>
@@ -80,10 +80,10 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     </div>
     <a href="{{route('index')}}">Home</a>
-    <a href="{{route('books.index')}}">Books</a>
+    <a href="{{route('book')}}">Books</a>
     <a href="{{route('about')}}">About Us</a>
     <a href="{{route('faq')}}">FAQ</a>
-    <a href="">Login</a>
-    <a href="">Register</a>
+    <a href="{{route('login')}}">Login</a>
+    <a href="{{route('register')}}">Register</a>
 </div>
 </div>

@@ -16,32 +16,32 @@
         <div class="layout">
 			<section class="inner">
 			<section class="dashboardcontainer">
-                    @if($title!=null)
-                    <small>{{count($books)}} results found for: {{$title}}</small>
-                @endif
+                    
 				<ul class="grid">
                     @if(count($books)>0)
-                        <h4>{{count($books)}} results found for: {{$title}}</h4>
-                        <br>
-                    @foreach($books as $book)
-					<li class="grid-tile">
-						<div class="item">
-                            <div class="item-img">
-                                    <img class="bookImg" src="{{asset('storage/images/'.$book->image)}}">
+                        @if(!empty($title))
+                            <h4>{{count($books)}} results found for: {{$title}}</h4>
+                            <br>
+                        @endif
+                        @foreach($books as $book)
+                        <li class="grid-tile">
+                            <div class="item">
+                                <div class="item-img">
+                                        <img class="bookImg" src="{{asset('storage/images/'.$book->image)}}">
+                                </div>
+                                <div class="item-pnl">
+                                    <div class="pnl-wrapper">
+                                        <div class="pnl-description">
+                                            <span class="pnl-label"><a href="{{route('bookShow',$book->id)}}">{{$book->title}}</a></span>
+                                            <h5>{{$book->author}}</h5>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
                             </div>
-							<div class="item-pnl">
-								<div class="pnl-wrapper">
-									<div class="pnl-description">
-                                        <span class="pnl-label"><a href="{{route('bookShow',$book->id)}}">{{$book->title}}</a></span>
-                                        <h5>{{$book->author}}</h5>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-                    </li>
-                    <!--<div class="centerPaginate"> -->
-                    @endforeach
+                        </li>
+                        <!--<div class="centerPaginate"> -->
+                        @endforeach
                     {{$books->appends(\Request::except('page'))->links()}}
                     @else
                         <div class="container">
