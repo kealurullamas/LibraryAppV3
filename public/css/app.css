@@ -126,6 +126,18 @@ input[type=text]:focus {
   border: 2px solid #8c0000;
   padding: 20px;
   width: 48.7vw !important;
+  margin-bottom: 20px;
+}
+
+.btn-same-line {
+  display: inline !important;
+  vertical-align: middle;
+  width: 7em;
+}
+
+.tb-same-line {
+  display: inline !important;
+  vertical-align: middle;
 }
 
 .admincontainer {
@@ -142,6 +154,30 @@ input[type=text]:focus {
 
 .Searchcontainer {
   min-height: 76.16vh;
+  height: 100% !important;
+  max-width: 70vw !important;
+  margin-top: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 10px;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.non-admin-dashboard {
+  min-height: 80.16vh;
+  height: 100% !important;
+  max-width: 70vw !important;
+  margin-top: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 10px;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.dashboardcontainer {
+  min-height: 80.16vh;
   height: 100% !important;
   max-width: 70vw !important;
   margin-top: auto !important;
@@ -177,6 +213,23 @@ input[type=text]:focus {
 }
 
 @media only screen and (max-width: 360px) {
+  .non-admin-dashboard {
+    min-height: 80.16vh;
+    height: 100% !important;
+    max-width: 70vw !important;
+    margin-top: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 10px;
+    padding-left: 0vw;
+    padding-right: 0vw;
+  }
+
+  .responsive-table {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+
   .book-title {
     font-size: 1.75em;
   }

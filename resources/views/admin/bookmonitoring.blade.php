@@ -16,9 +16,8 @@
                         Book Monitoring
                         <br><br>
                         {!!Form::open(['action'=>'BookMonitoringController@search','method'=>'POST'])!!}
-                        {{Form::text('user','',['placeholder'=>"Enter Borrower's Name",'class'=>'form-control'])}}
-                        <br>
-                        {{Form::submit('Search',['class'=>'btn btn-primary'])}}
+                        {{Form::text('user','',['placeholder'=>"Enter Borrower's Name",'class'=>'form-control tb-same-line'])}}
+                        {{Form::submit('Search',['class'=>'btn btn-primary btn-same-line'])}}
                         {!!Form::close()!!}
                         <table class="table">
                             <thead class="thead-dark">

@@ -2,11 +2,11 @@
 
 @section('content')
     {{--  @if(count($books)>0)  --}}
-        {{--  <div class="container">
+        {{--  <div class="dashboardcontainer">
             <h1><strong>Books</strong></h1>
         </div>
         @foreach($books as $book)
-            <div class="container">
+            <div class="dashboardcontainer">
                 <a href="{{route('books.show',$book->id)}}"><img style="width: 25%;" src="{{asset('images/'.$book->image)}}"></a>
                 <h5><a href="{{route('books.show',$book->id)}}">{{$book->title}}</a></h3>
                 <h6>{{$book->author}}</h6>
@@ -15,6 +15,10 @@
         {{$books->links()}}  --}}
         <div class="layout">
 			<section class="inner">
+			<section class="dashboardcontainer">
+                    @if($title!=null)
+                    <small>{{count($books)}} results found for: {{$title}}</small>
+                @endif
 				<ul class="grid">
                     @if(count($books)>0)
                         <h4>{{count($books)}} results found for: {{$title}}</h4>
