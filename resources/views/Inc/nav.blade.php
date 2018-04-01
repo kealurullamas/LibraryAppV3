@@ -83,7 +83,26 @@
     <a href="{{route('book')}}">Books</a>
     <a href="{{route('about')}}">About Us</a>
     <a href="{{route('faq')}}">FAQ</a>
-    <a href="{{route('login')}}">Login</a>
-    <a href="{{route('register')}}">Register</a>
+    @guest
+                <a class="links" href="{{route('login')}}">Login</a>
+                <a class="links" href="{{route('register')}}">Register</a>
+             
+                @else
+
+                        <a href="#" class="links" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+                        <a class="profile-links" href="{{route('dashboard')}}">Dashboard</a>
+                                <a class="profile-links" href="{{ route('users.logout') }}"
+                                    onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('users.logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                      
+                @endguest
 </div>
 </div>
