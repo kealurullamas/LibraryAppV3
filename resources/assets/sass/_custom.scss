@@ -6,7 +6,6 @@ input[type=text] {
     transition: width 0.4s ease-in-out;
 }
 
-
 /* When the input field gets focus, change its width to 80% */
 
 input[type=text]:focus {
@@ -68,8 +67,11 @@ input[type=text]:focus {
 
 //center img
 .center-img {
-    margin-left: auto !important;
-    margin-right: auto !important;
+    //margin-left: auto !important;
+    //margin-right: auto !important;
+    margin-left: 0.5vh;
+    margin-right: 1.5vh;
+    float: left !important;
 }
 
 //div rounded
@@ -77,12 +79,19 @@ input[type=text]:focus {
     border-radius: 10px;
     border: 2px solid #8c0000;
     padding: 20px;
+    padding-bottom: 10vh !important;
     width: 48.7vw !important;
     margin-left: auto;
     margin-right: auto;
 }
 
-.book-title {}
+.book-title {
+    //float: right;
+}
+
+.book-author {
+    //float: right;
+}
 
 //searchboxxx
 .searchBox {
@@ -216,6 +225,12 @@ input[type=text]:focus {
     margin-bottom: 10px;
     padding-left: 2vw;
     padding-right: 2vw;
+}
+
+.book-description {
+    //display: inline-block;
+    width: 45vw;
+    text-align: justify; //float: right !important;
 }
 
 .about-us-img {}
@@ -645,7 +660,6 @@ input[type=text]:focus {
     }
 }
 
-
 /* PORTRAIT MOBILE MODE
    */
 
@@ -682,7 +696,6 @@ input[type=text]:focus {
         width: 40px
     }
 }
-
 
 /* LANDSCAPE MOBILE MODE (~416px)
    */
@@ -778,7 +791,6 @@ input[type=text]:focus {
         margin: 0 auto
     }
 }
-
 
 /* new nav*/
 
@@ -960,7 +972,6 @@ input[type=text]:focus {
         margin: 0px;
     }
 }
-
 
 /*Sidenav*/
 

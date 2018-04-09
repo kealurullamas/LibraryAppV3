@@ -4,7 +4,7 @@
     <div class="bookcontainer">
         <div class="book-desc">
             <img class="center-img" src="{{asset('storage/images/'.$books->image)}}">
-        
+            
             <h1 class="book-title">{{$books->title}}</a></h1>
             <h6 class="book-author">{{$books->author}}</h6>
             <h5 class="book-description">{{$books->description}}</h5>

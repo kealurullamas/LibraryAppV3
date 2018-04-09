@@ -63,14 +63,16 @@ input[type=text]:focus {
 }
 
 .center-img {
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-left: 0.5vh;
+  margin-right: 1.5vh;
+  float: left !important;
 }
 
 .book-desc {
   border-radius: 10px;
   border: 2px solid #8c0000;
   padding: 20px;
+  padding-bottom: 10vh !important;
   width: 48.7vw !important;
   margin-left: auto;
   margin-right: auto;
@@ -210,6 +212,11 @@ input[type=text]:focus {
   margin-bottom: 10px;
   padding-left: 2vw;
   padding-right: 2vw;
+}
+
+.book-description {
+  width: 45vw;
+  text-align: justify;
 }
 
 @media only screen and (max-width: 360px) {
