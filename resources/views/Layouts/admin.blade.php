@@ -21,8 +21,16 @@
     <div id="app">
        @include('Inc.admin_nav')
        @include('Inc.messages');
-       @include('Inc.side_nav')
-        @yield('content')
+       {{-- @include('Inc.side_nav')
+        @yield('content') --}}
+        <div class="container">
+            <h1>Book Controlesss</h1>
+            <h3><router-link to="/BooksAll">Books</router-link></h3>
+            <div class="container">
+                <router-view></router-view>
+            </div>
+            {{-- <books></books> --}}
+        </div>
         @include('Layouts.footer')
     </div>
 

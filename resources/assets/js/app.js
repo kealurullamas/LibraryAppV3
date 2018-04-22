@@ -1,4 +1,8 @@
 import Axios from 'axios';
+import VueRouter from 'vue-router';
+import books from './components/Books.vue';
+import App from './components/App.vue';
+import Create from './components/create.vue';
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -9,7 +13,7 @@ import Axios from 'axios';
 require('./bootstrap');
 
 window.Vue = require('vue');
-
+Vue.use(VueRouter);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -17,22 +21,40 @@ window.Vue = require('vue');
  */
 
 Vue.component('notification', require('./components/Notification.vue'));
+// Vue.component('books', require('./components/Books.vue'));
 
-const app = new Vue({
-    el: '#app',
-    data: {
-        notifications: ''
-    },
-    created(){
-        var userId = $('meta[name="userId"]').attr('content');
-        axios.post('http://localhost/LibraryApp/public/notification/get').then(response=>{
-            this.notifications=response.data;
-        
-        });
-
-        Echo.private('App.User.'+ userId).notification((notification) => {
-            console.log('asdasdasdads');
-            this.notifications.push(notification);
-        });
-    }
+const router=new VueRouter({
+    mode: 'history',
+        routes:[
+        {
+            path:'/BooksAll',
+            component:books
+        },
+        {
+            path:'/create',
+            component:Create
+        }
+    ]
 });
+
+const app=new Vue({router}).$mount('#app');
+// const app = new Vue({
+//     el: '#app',
+//     components:{ App,books},
+//     router
+//     // data: {
+//     //     notifications: ''
+//     // },
+//     // created(){
+//     //     var userId = $('meta[name="userId"]').attr('content');
+//     //     axios.post('http://localhost/LibraryApp/public/notification/get').then(response=>{
+//     //         this.notifications=response.data;
+        
+//     //     });
+
+//     //     Echo.private('App.User.'+ userId).notification((notification) => {
+//     //         console.log('asdasdasdads');
+//     //         this.notifications.push(notification);
+//     //     });
+//     // }
+// });
