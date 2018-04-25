@@ -20,4 +20,7 @@ class Books extends Model
     {
         return $this->hasMany('App\BookAccepts');
     }
+    public function booklog(){
+        return $this->hasOne('App\BookLogs');
+    }
 }

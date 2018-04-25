@@ -63,6 +63,7 @@ input[type=text]:focus {
 }
 
 .center-img {
+  width: 200px;
   margin-left: 0.5vh;
   margin-right: 1.5vh;
   float: left !important;
@@ -143,8 +144,10 @@ input[type=text]:focus {
 }
 
 .admincontainer {
-  min-height: 79.16vh;
+  min-height: 900px;
+  min-width: 1200px;
   height: 100% !important;
+  width: 100% !important;
   max-width: 70vw !important;
   margin-top: auto !important;
   margin-left: auto !important;
@@ -167,6 +170,7 @@ input[type=text]:focus {
 }
 
 .non-admin-dashboard {
+  min-width: 340px !important;
   min-height: 80.16vh;
   height: 100% !important;
   max-width: 70vw !important;
@@ -215,7 +219,8 @@ input[type=text]:focus {
 }
 
 .book-description {
-  width: 45vw;
+  width: 100%;
+  min-width: 100px;
   text-align: justify;
 }
 
@@ -2693,7 +2698,8 @@ img {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   display: inline-block;
-  max-width: 100%;
+  max-width: 100px;
+  min-width: 75px;
   height: auto;
 }
 

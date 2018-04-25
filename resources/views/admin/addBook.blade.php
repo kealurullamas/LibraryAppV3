@@ -25,6 +25,14 @@
                     {{Form::label('description','Description')}}
                     {{Form::textarea('bookDescription','',['class'=>'form-control addbook-desc','placeholder'=>'Enter Book Author'])}}
                 </div>
+                <div class="form-group addbook-formgroup">
+                    {{Form::label('classification','Classification')}}
+                    <select name="bookClassification" id="" class="form-control">
+                        @foreach($classifications as $classification)
+                            <option value="{{$classification->id}}">{{$classification->classification}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-group">
                     {{Form::label('number','Number of Books')}}
                     {{Form::number('bookSupply','',['class'=>'form-control','min'=>'1','max'=>'5s'])}}

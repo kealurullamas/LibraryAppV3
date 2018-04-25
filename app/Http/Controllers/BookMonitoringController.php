@@ -9,6 +9,7 @@ use App\User;
 use App\Books;
 use Carbon\Carbon;
 use App\Notifications\NotifyUser;
+use App\BookLogs;
 class BookMonitoringController extends Controller
 {
     /**
@@ -31,12 +32,24 @@ class BookMonitoringController extends Controller
     public function returns($id)
     {
         $bookreq=BooksRequest::find($id);
+        $bookreq->status='Returned';
 
         $book=Books::find($bookreq->book_id);
         $book->increment('supply','1');
         $book->save();
-
+        $bookreq->save();
         //$bookreq->delete();
+        $booklog=BookLogs::where('book_id','=',$bookreq->book_id)->firstorfail();
+        
+        if($booklog->Returns>0){
+
+            $booklog->increment('Returns','1');
+            $booklog->save();
+           
+        }else{
+            $booklog->Returns=1;
+            $booklog->save();
+        }
         
 
         return redirect('BookMonitoring')->with('success','Book '.$book->title.' has been returned');
@@ -45,7 +58,7 @@ class BookMonitoringController extends Controller
     {
         //get all book requests with status received
         $data=[
-            'books'=>BooksRequest::where('status','=','Received')->paginate(6),
+            'books'=>BooksRequest::where('status','=','Received')->paginate(4),
             'today'=>Carbon::now()->addDays(7)->toDateString()
         ];
         
@@ -75,6 +88,11 @@ class BookMonitoringController extends Controller
         }
         
         
+    }
+    public function getBookLogs(){
+        $data=[
+            'returns'=>Book
+        ];
     }
 
     /**

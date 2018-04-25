@@ -24,6 +24,7 @@ Route::get('/book','PagesController@book')->name('book');
 Route::get('/book/show/{id}','PagesController@bookShow')->name('bookShow');
 Route::post('books/search','PagesController@bookSearch');
 Route::resource('/books','BooksController');
+Route::get('book/booklog','BooksController@bookLog')->name('booklog');
 Auth::routes();
 
 Route::post('BookRequest/findAndStore','BookRequestsController@findAndStore');
@@ -51,3 +52,5 @@ Route::resource('BookMonitoring','BookMonitoringController');
 Route::get('NotifyDue/{id}','BookMonitoringController@notifyDue')->name('notify');
 Route::get('/returns/{id}','BookMonitoringController@returns')->name('return');
 Route::post('/BookMonitoring/Search','BookMonitoringController@search');
+
+Route::get('/bookGetByClassi/{classification}','PagesController@showByClassi')->name('getByClassi');

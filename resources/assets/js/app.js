@@ -37,24 +37,23 @@ const router=new VueRouter({
     ]
 });
 
-const app=new Vue({router}).$mount('#app');
-// const app = new Vue({
-//     el: '#app',
-//     components:{ App,books},
-//     router
-//     // data: {
-//     //     notifications: ''
-//     // },
-//     // created(){
-//     //     var userId = $('meta[name="userId"]').attr('content');
-//     //     axios.post('http://localhost/LibraryApp/public/notification/get').then(response=>{
-//     //         this.notifications=response.data;
+// const app=new Vue({router}).$mount('#app');
+const app = new Vue({
+    el: '#app',
+    components:{ App,books},
+    data: {
+        notifications: ''
+    },
+    created(){
+        var userId = $('meta[name="userId"]').attr('content');
+        axios.post('http://localhost/LibraryApp/public/notification/get').then(response=>{
+            this.notifications=response.data;
         
-//     //     });
+        });
 
-//     //     Echo.private('App.User.'+ userId).notification((notification) => {
-//     //         console.log('asdasdasdads');
-//     //         this.notifications.push(notification);
-//     //     });
-//     // }
-// });
+        Echo.private('App.User.'+ userId).notification((notification) => {
+            console.log('asdasdasdads');
+            this.notifications.push(notification);
+        });
+    }
+});

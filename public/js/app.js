@@ -1132,27 +1132,27 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     }]
 });
 
-var app = new Vue({ router: router }).$mount('#app');
-// const app = new Vue({
-//     el: '#app',
-//     components:{ App,books},
-//     router
-//     // data: {
-//     //     notifications: ''
-//     // },
-//     // created(){
-//     //     var userId = $('meta[name="userId"]').attr('content');
-//     //     axios.post('http://localhost/LibraryApp/public/notification/get').then(response=>{
-//     //         this.notifications=response.data;
+// const app=new Vue({router}).$mount('#app');
+var app = new Vue({
+    el: '#app',
+    components: { App: __WEBPACK_IMPORTED_MODULE_3__components_App_vue___default.a, books: __WEBPACK_IMPORTED_MODULE_2__components_Books_vue___default.a },
+    data: {
+        notifications: ''
+    },
+    created: function created() {
+        var _this = this;
 
-//     //     });
+        var userId = $('meta[name="userId"]').attr('content');
+        axios.post('http://localhost/LibraryApp/public/notification/get').then(function (response) {
+            _this.notifications = response.data;
+        });
 
-//     //     Echo.private('App.User.'+ userId).notification((notification) => {
-//     //         console.log('asdasdasdads');
-//     //         this.notifications.push(notification);
-//     //     });
-//     // }
-// });
+        Echo.private('App.User.' + userId).notification(function (notification) {
+            console.log('asdasdasdads');
+            _this.notifications.push(notification);
+        });
+    }
+});
 
 /***/ }),
 /* 13 */

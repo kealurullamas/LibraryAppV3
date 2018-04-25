@@ -16,7 +16,6 @@
                             <table class="table">
                                 <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col"></th>
                                     <th scope="col">Book Title</th>
                                     <th scope="col">Date Borrowed</th>
                                     <th scope="col">Due Date</th>
@@ -26,8 +25,8 @@
                                 @foreach($bookaccepts as $accepts)
                                     @if($accepts->status=='Received')
                                         <tr>
-                                        <td><img src="{{asset('storage/images/'.$accepts->book->image)}}" class='img-thumbnail'></td>
-                                        <td>{{$accepts->book->title}}</td>
+                                            
+                                        <td><a href="{{route('bookShow',$accepts->book->id)}}">{{$accepts->book->title}}</a></td>
                                         <td>{{$accepts->created_at}}</td>
                                         @if($accepts->due_date==$dayBefore)
                                             <td><p class="text-danger">{{$accepts->due_date}}</p></td>
@@ -58,7 +57,6 @@
                     <table class="table">
                         <thead class="thead-dark">
                         <tr>
-                            <th scope="col"></th>
                             <th scope="col">Book Title</th>
                             <th scope="col">Date Borrowed</th>
                             <th scope="col">Status</th>
@@ -68,8 +66,8 @@
                         @foreach($bookrequest as $requests)
                             
                             <tr>
-                                <td><img src="{{asset('storage/images/'.$requests->book->image)}}" class='img-thumbnail'></td>
-                                <td>{{$requests->book->title}}</td>
+                             
+                                <td><a href="{{route('bookShow',$requests->book->id)}}">{{$requests->book->title}}</a></td>
                                 <td>{{$requests->created_at}}</td>
                                 <td>{{$requests->status}}</td>
                             </tr>

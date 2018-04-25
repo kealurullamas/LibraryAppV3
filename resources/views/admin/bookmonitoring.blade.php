@@ -64,14 +64,14 @@
                                             </tr>
                                       
                                     @endforeach
-                                    {{$books->links()}}
+                                    
                                 @else
                                 <td><p class="text-success">No results found for: {{$result}}</p></td>
                                 @endif
 
                             </tbody>
                         </table>
-                        
+                        {{$books->links()}}
                     </div>
                 </div>
             </div>

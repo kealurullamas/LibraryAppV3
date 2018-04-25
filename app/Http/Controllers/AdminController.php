@@ -24,7 +24,7 @@ class AdminController extends Controller
     public function admin()
     {
         //gets all pending book requests
-        $book_requests=BooksRequest::where('status','=','pending')->orderBy('created_at','desc')->paginate(5);
+        $book_requests=BooksRequest::where('status','=','pending')->orderBy('created_at','desc')->paginate(3);
         return view('admin_dashboard')->with('book_requests',$book_requests);
     }
     public function index()
@@ -32,7 +32,7 @@ class AdminController extends Controller
         // /
         // $book_requests=BooksRequest::where('status','!=','Accepted')->orderBy('created_at','desc')->paginate(5);
         // return view('admin_dashboard')->with('book_requests',$book_requests);
-    }
+    }   
 
     /**
      * Show the form for creating a new resource.

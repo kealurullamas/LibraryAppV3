@@ -29,6 +29,12 @@
                   </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('booklog')}}">
+                      <span data-feather="users"></span>
+                      Book Logs
+                    </a>
+                  </li>
+                <li class="nav-item">
                   <a class="nav-link" href="{{route('books.create')}}">
                     <span data-feather="bar-chart-2"></span>
                     Add Book

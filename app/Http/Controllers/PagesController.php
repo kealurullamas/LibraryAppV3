@@ -9,7 +9,7 @@ class PagesController extends Controller
     public function index()
     {
         $data=[
-            'books'=>Books::orderBy('created_at')->take(6)->get(),
+            'books'=>Books::orderBy('created_at','desc')->take(6)->get(),
         ];
         return view('Pages.index')->with($data);
     }
@@ -51,5 +51,9 @@ class PagesController extends Controller
     {
         $book=Books::find($id);
         return view('Books.views')->with('books',$book);
+    }
+    public function showByClassi($classification){
+        $books=Books::where('classification_id','=',$classification)->paginate(100);
+        return view('Pages.books')->with('books',$books);
     }
 }

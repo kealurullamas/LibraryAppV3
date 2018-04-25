@@ -8,6 +8,7 @@ use App\BookAccepts;
 use App\Books;
 use App\User;
 use Carbon\Carbon;
+use App\BookLogs;
 use App\Notifications\NotifyUser;
 
 class BookAcceptsController extends Controller
@@ -26,7 +27,7 @@ class BookAcceptsController extends Controller
     public function index()
     {
         //
-        $book_accepts=BooksRequest::where('status','=','Accepted')->paginate(10);
+        $book_accepts=BooksRequest::where('status','=','Accepted')->paginate(3);
         return view('admin.bookaccepts')->with('book_accepts',$book_accepts);
     }
 
@@ -91,6 +92,18 @@ class BookAcceptsController extends Controller
             $bookreq->status=$request->input('status');
             $bookreq->due_date=$due;
             $bookreq->save();
+            if(BookLogs::where('book_id','=',$bookreq->book_id)->exists()){
+                $booklog=BookLogs::where('book_id','=',$bookreq->book_id)->firstorfail();
+                $log=BookLogs::find($booklog->id);
+                $log->increment('Receives','1');
+                $log->save();
+               
+            }else{
+                $booklog=new BookLogs;
+                $booklog->book_id=$bookreq->book_id;
+                $booklog->Receives=1;
+                $booklog->save();
+            }
             $user->notify(new NotifyUser(BooksRequest::where('id','=',$id)->firstorfail()));
             return redirect('BookAccepts')->with('success','Book '.$bookreq->book->title.' has been Received');
         }else{

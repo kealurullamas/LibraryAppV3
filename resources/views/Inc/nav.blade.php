@@ -4,7 +4,25 @@
         <div class="row row1">
             <ul class="largenav pull-right">
                 <li class="upper-links"><a class="links" href="{{route('index')}}">Home</a></li>
-                <li class="upper-links"><a class="links" href="{{route('book')}}">Books</a></li>
+                <li class="upper-links dropdown"><a class="links" data-toggle="dropdown" role="button" href="{{route('book')}}">Books</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{route('getByClassi','1')}}" class="profile-links">CAS</a>
+                        </li>
+                        <li>
+                            <a href="{{route('getByClassi','2')}}" class="profile-links">CITHM</a>
+                        </li>
+                        <li>
+                            <a href="{{route('getByClassi','3')}}" class="profile-links">CIR</a>
+                        </li>
+                        <li>
+                            <a href="{{route('getByClassi','4')}}" class="profile-links">COT</a>
+                        </li>
+                        <li>
+                            <a href="{{route('getByClassi','5')}}" class="profile-links">CBA</a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="upper-links"><a class="links" href="{{route('about')}}">About Us</a></li>
                 <li class="upper-links"><a class="links" href="{{route('faq')}}">FAQ</a></li>
                 @guest

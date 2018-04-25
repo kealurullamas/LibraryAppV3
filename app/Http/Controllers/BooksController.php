@@ -7,6 +7,9 @@ use App\Http\Requests;
 use App\Http\Resources\BookResource;
 use App\Books;
 use App\User;
+use App\Classification;
+use App\BooksRequest;
+use App\BookLogs;
 class BooksController extends Controller
 {
     /**
@@ -16,13 +19,14 @@ class BooksController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth:admin');
+        $this->middleware('auth:admin');
     }
     public function index()
     {
+        
         $books=Books::orderBy('created_at','desc')->paginate(10);
-        // return view('admin.books')->with('books',$books);
-        return BookResource::collection($books);
+        return view('admin.books')->with('books',$books);
+        // return BookResource::collection($books);
     }
 
     public function search(Request $request)
@@ -38,7 +42,8 @@ class BooksController extends Controller
     public function create()
     {
         //
-       return view('admin.addBook');
+       $classifications=Classification::get();
+       return view('admin.addBook')->with('classifications',$classifications);
     }
 
     /**
@@ -49,8 +54,6 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        $max_size = (int)ini_get('upload_max_filesize') * 1000;
-        $all_ext = implode(',', $this->allExtensions());
         
         $this->validate($request,[
             'bookTitle'=>'required',
@@ -59,6 +62,8 @@ class BooksController extends Controller
             'bookReference'=>'required',
             'bookDescription'=>'required',
             'bookSupply'=>'required',
+            'bookClassification'=>'required',
+            'bookImage'=>'image|nullable|max:1999'
             // 'bookImage'=> 'required|file|mimes:' . $all_ext . '|max:' . $max_size
             // 'bookImage' => 'required|image64:jpeg,jpg,png'
         ]);
@@ -100,13 +105,14 @@ class BooksController extends Controller
         $book->publisher=$request->input('bookPublisher');
         $book->ref=$request->input('bookReference');
         $book->description=$request->input('bookDescription');
-        $book->image=$fileName;
+        $book->image=$filenametostore;
         $book->supply=$request->input('bookSupply');
+        $book->classification_id=$request->input('bookClassification');
     
         $book->save();
 
-        // return redirect('books')->with('success','Book '.$book->title.' has been added');
-        return new BookResource($book);
+        return redirect('books')->with('success','Book '.$book->title.' has been added');
+        // return new BookResource($book);
     }
 
     /**
@@ -184,8 +190,8 @@ class BooksController extends Controller
         $book->supply=$request->input('bookSupply');
         $book->save();
 
-        // return redirect('books')->with('success','Book '.$book->title.' has been updated');
-        return new BookResource($book);
+        return redirect('books')->with('success','Book '.$book->title.' has been updated');
+        // return new BookResource($book);
     }
 
     /**
@@ -199,7 +205,14 @@ class BooksController extends Controller
         //
         $book=Books::find($id);
         $book->delete();
-        // return redirect('books')->with('error','Book '.$book->title.' has been deleted');
-        return new BookResource($book);
+        return redirect('books')->with('error','Book '.$book->title.' has been deleted');
+        // return new BookResource($book);
+    }
+
+    public function bookLog(){
+        
+        $logs=BookLogs::paginate(3);
+
+        return view('admin.booklog')->with('logs',$logs);
     }
 }
