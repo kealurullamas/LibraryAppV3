@@ -40,17 +40,21 @@ class PagesController extends Controller
     public function bookSearch(Request $request)
     {
         $book_search=$request->input('book');
-        $book=Books::where('title','LIKE','%'.$book_search.'%')->paginate(100);
+        $book=Books::where('title','LIKE','%'.$book_search.'%')->orWhere('AUTHOR','LIKE','%'.$book_search)->paginate(100);
         $data=[
             'books'=>$book,
             'title'=>$request->input('book'),
-        ];
+        ];  
         return view('Pages.books')->with($data);
     }
     public function bookShow($id)
     {
         $book=Books::find($id);
-        return view('Books.views')->with('books',$book);
+        $data=[
+            'bookrelate'=>Books::where('classification_id','=',$book->classification_id),
+            'books'=>$book
+        ];
+        return view('Books.views')->with($data);
     }
     public function showByClassi($classification){
         $books=Books::where('classification_id','=',$classification)->paginate(100);
