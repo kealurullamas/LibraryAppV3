@@ -90,6 +90,7 @@ class BooksController extends Controller
 
             $filenametostore=$filename.'_'.time().'.'.$extension;
 
+            $path=$request->file('bookImage')->storeAs('public/storage/images',$filenametostore);
             $path=$request->file('bookImage')->storeAs('public/images',$filenametostore);
         
         }else{
@@ -107,7 +108,7 @@ class BooksController extends Controller
         $book->description=$request->input('bookDescription');
         $book->image=$filenametostore;
         $book->supply=$request->input('bookSupply');
-        $book->classification_id=$request->input('bookClassification');
+        // $book->classification_id=$request->input('bookClassification');
     
         $book->save();
 
