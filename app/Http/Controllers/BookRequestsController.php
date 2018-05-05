@@ -18,6 +18,7 @@ class BookRequestsController extends Controller
     public function __construct()
     {
         // $this->middleware('auth:admin');
+        $this->middleware(['auth','auth:admin']);
     }
     public function index()
     {
@@ -83,14 +84,14 @@ class BookRequestsController extends Controller
     public function show($id)
     {
         //
-        if(!Auth()->guest()){
-            $book=Books::find($id);
-            return view('Request.form')->with('book',$book);
-        }
-        else
-        {
-            return view('auth.login');
-        }
+        // if(!Auth()->guest()){
+        //     $book=Books::find($id);
+        //     return view('Request.form')->with('book',$book);
+        // }
+        // else
+        // {
+        //     return view('auth.login');
+        // }
     }
 
     /**
