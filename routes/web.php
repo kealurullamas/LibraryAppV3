@@ -54,3 +54,5 @@ Route::get('/returns/{id}','BookMonitoringController@returns')->name('return');
 Route::post('/BookMonitoring/Search','BookMonitoringController@search');
 
 Route::get('/bookGetByClassi/{classification}','PagesController@showByClassi')->name('getByClassi');
+
+Route::post('/UserRequest','RequestsController@store')->name('userReq');

@@ -19,11 +19,15 @@
                 <p class="text-danger">Out of Stock </p>
                 <br><br>
                 @endif
-                {!!Form::open(['action'=>'BookRequestsController@store' ,'method'=>'POST'])!!}
+                @guest
+                    <a href="{{route('login')}}" class="btn btn-primary" style="width:100%;min-width:250px;">Please Sign in to Request for Books</a>
+                @else
+                {!!Form::open(['action'=>'RequestsController@store' ,'method'=>'POST'])!!}
                     {{Form::hidden('bookid',$books->id)}}
                     {{Form::hidden('bookname',$books->title)}}
                     {{Form::submit('Request',['class'=>'btn btn-primary','style'=>'width:100%;min-width:250px;'])}} 
                 {!!Form::close()!!}
+                @endguest
             </div>  
             </div>
         </div>
